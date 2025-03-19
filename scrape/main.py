@@ -277,8 +277,8 @@ def push_data(dhall: int, meal: int, wfapi_menu: dict):
     url = "http://localhost:3000/api/push"
     for dish in wfapi_menu:
         payload = {
-            "supabaseUrl": os.environ.get("VUE_APP_SUPABASE_URL"),
-            "supabaseKey": os.environ.get("VUE_APP_SUPABASE_KEY"),
+            "supabaseUrl": os.environ.get("NUXT_SUPABASE_URL"),
+            "supabaseKey": os.environ.get("NUXT_SUPABASE_KEY"),
             "date": dish["date"][:10],
             "dhall": dhall,
             "meal": meal,
@@ -294,6 +294,7 @@ def push_data(dhall: int, meal: int, wfapi_menu: dict):
         for preference in dish["preferences"]:
             payload[PREFERENCE_FIELDS[preference["id"]]] = True
 
+    
         # async with httpx.AsyncClient() as client:
         #     response = await client.post(url, json=payload)
         #     print(response.json())
@@ -302,5 +303,16 @@ def push_data(dhall: int, meal: int, wfapi_menu: dict):
         print(response.json())
 
 
+def delete_data():
+    url = "http://localhost:3000/api/delete"
+    payload = {
+        "supabaseUrl": os.environ.get("NUXT_SUPABASE_URL"),
+        "supabaseKey": os.environ.get("NUXT_SUPABASE_KEY"),
+    }
+
+    response = requests.post(url, json=payload)
+    print(response.json())
+
+delete_data()
 test_menu = get_menu(Lulu.ID, Lulu.DINNER)
-asyncio.run(push_data(Lulu.ID, Lulu.DINNER, test_menu))
+push_data(Lulu.ID, Lulu.DINNER, test_menu)

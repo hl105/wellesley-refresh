@@ -1,4 +1,4 @@
-// server/push.ts
+// server/api/push.ts
 import { createClient } from "@supabase/supabase-js";
 
 const ALLERGENS_AND_PREFERENCE_FIELDS = [
