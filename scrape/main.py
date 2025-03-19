@@ -186,7 +186,7 @@ class DiningHall(StrEnum):
     """
 
     BATES = "Bates"
-    STONEDAVIS = "Stone Davis"
+    STONEDAVIS = "Stone D"
     LULU = "Lulu"
     TOWER = "Tower"
 
@@ -283,7 +283,7 @@ def push_data(dhall: int, meal: int, wfapi_menu: dict):
             "meal": meal,
             "name": dish["name"],
             "description": dish["description"],
-            "station": dish["stationName"],
+            "station": dish["stationName"].title(),
             "stationOrder": dish["stationOrder"],
         }
 
