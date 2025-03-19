@@ -1,20 +1,7 @@
-// import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
 
-// export default defineNuxtPlugin((nuxtApp) => {
-//   const config = useRuntimeConfig();
+const supabaseUrl = process.env.NUXT_SUPABASE_URL ?? "";
 
-//   // Correctly fetch the values
-//   const supabaseUrl = config.supabaseUrl; 
-//   const supabaseKey = config.supabaseKey; 
+const supabaseKey = process.env.NUXT_SUPABASE_KEY ?? "";
 
-//   console.log("Supabase URL:", supabaseUrl);
-//   console.log("Supabase Key:", supabaseKey ? "Loaded" : "Missing");
-
-//   const supabase = createClient(supabaseUrl, supabaseKey);
-
-//   return {
-//     provide: {
-//       supabase,
-//     },
-//   };
-// });
+export const supabase = createClient(supabaseUrl, supabaseKey);
