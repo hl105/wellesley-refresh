@@ -1,6 +1,5 @@
-import asyncio
 import os
-from datetime import date
+from datetime import date, timedelta
 from enum import IntEnum, StrEnum
 
 import requests
@@ -294,11 +293,6 @@ def push_data(dhall: int, meal: int, wfapi_menu: dict):
         for preference in dish["preferences"]:
             payload[PREFERENCE_FIELDS[preference["id"]]] = True
 
-    
-        # async with httpx.AsyncClient() as client:
-        #     response = await client.post(url, json=payload)
-        #     print(response.json())
-
         response = requests.post(url, json=payload)
         print(response.json())
 
@@ -313,6 +307,18 @@ def delete_data():
     response = requests.post(url, json=payload)
     print(response.json())
 
-delete_data()
-test_menu = get_menu(Lulu.ID, Lulu.DINNER)
-push_data(Lulu.ID, Lulu.DINNER, test_menu)
+
+def main() -> None:
+    delete_data()
+    for dhall in DINING_HALLS:
+        for meal in (dhall.BREAKFAST, dhall.LUNCH, dhall.DINNER):
+            for day in (
+                date.today(),
+                date.today() + timedelta(days=7),
+            ):  # get tomorrow too
+                menu = get_menu(dhall, meal, day)
+                push_data(dhall, meal, menu)
+
+
+if __name__ == "__main__":
+    main()
