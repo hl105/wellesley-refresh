@@ -1,6 +1,6 @@
 import asyncio
 import os
-from datetime import date
+from datetime import date, datetime
 from enum import IntEnum, StrEnum
 
 import requests
@@ -279,6 +279,7 @@ def push_data(dhall: int, meal: int, wfapi_menu: dict):
         payload = {
             "supabaseUrl": os.environ.get("VUE_APP_SUPABASE_URL"),
             "supabaseKey": os.environ.get("VUE_APP_SUPABASE_KEY"),
+            "date": datetime.strptime(dish["date"], "%Y-%m-%dT%H:%M:%S").date(),
             "dhall": dhall,
             "meal": meal,
             "name": dish["name"],
