@@ -2,7 +2,7 @@
 const props = defineProps(["date"])
 const today = new Date().toISOString().split('T')[0];
 
-const date = props.date === today ? "Today" : props.date;
+const date = props.date === today ? "Today's" : props.date;
 const backgroundC = props.date === today ? "#F3A203" : "#687350";
 
 </script>
