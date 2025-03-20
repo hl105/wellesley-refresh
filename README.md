@@ -1,75 +1,16 @@
-# Nuxt Minimal Starter
+# Wellesley Refresh - A Better Menu for Wellesley
+Wellesley Refresh is a better menu for Wellesley College created by Belle (bs107), Crystal (cm123), and Johanna (hl105). We got fed up having to switch through the outdated UI of WellesleyFresh's menu, and have to cycle through each dining hall to see where we want to go for lunch! You know what they say: if you want something done right, you should do it yourself. So, during Spring Break of 2025, we decided to get together and make a better one ourselves.
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Wellesley Refresh presents meals at Bates, Stone D, Lulu, and Tower side-by-side so you can quickly decide where you want to go for lunch -- because your time is better spent hanging out with friends! (or studying, if you must...)
 
-## Setup
 
-Make sure to install dependencies:
+## Disclaimer
+Wellesley Refresh is **not** more accurate than Wellesley Fresh's official menu. Wellesley Refresh relies on the data that Wellesley Fresh provides, so if Wellesley Fresh says Lulu is serving burgers, so will Wellesley Refresh, even if Lulu actually has fried rice. Crowdsourcing menus is a possible solution, and may be implemented in the future, but this poses much bigger technical challenges. For now, Wellesley Refresh is only a UI refresh on the dining hall menus.
 
-```bash
-# npm
-npm install
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Roadmap
+- [ ] Open page starting from the current/next meal, rather than always from breakfast.
+- [ ] Add allergen and preference icons next to each dish
+- [ ] Tidy up the layout
+  - [ ] Change columns for grid to be 1, 2, or 4 columns (not 3)
+- [ ] Create a plan for deploying the website
