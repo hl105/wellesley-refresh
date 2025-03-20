@@ -3,30 +3,22 @@ const props = defineProps(["date"])
 const today = new Date().toISOString().split('T')[0];
 
 const date = props.date === today ? "Today" : props.date;
+const backgroundC = props.date === today ? "#F3A203" : "#687350";
+
 </script>
 
 <template>
-    <button>{{ date }}</button>
+    <button :style="{ backgroundColor: `${backgroundC}`}">{{ date }}</button>
 </template>
 
 <style scoped>
 button {
-    border: 3px solid #687350;
     padding: 5px 10px;
-    border-radius: 20px;
+    margin-right: 3px;
+    border-radius: 25px;
     cursor: pointer;
-    color: #687350;
-    transition-duration: 0.3s;
-    font-family: "DynaPuff", sans-serif;
-}
-
-button:hover {
-    background-color: #687350;
     color: #fff2e2;
+    transition-duration: 0.3s;
+    font-weight: bold;
 }
-
-button:active {
-  background-color: #687350;
-}
-
 </style>

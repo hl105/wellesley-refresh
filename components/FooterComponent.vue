@@ -5,12 +5,12 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-links">
-        <a href="https://www.wellesley.edu/dining" target="_blank">&copy; 2025 Wellesley Refresh</a>
+        <p>Built with &#x2661; by Johanna Lee, Crystal McArdle-Ventura, and Belle See</p>
       </div>
       <div class="footer-links">
         <a href="mailto:hl105@wellesley.edu">Email for feedback & suggestions!</a>
         <span class="separator">|</span>
-        <a href="https://github.com/hl105/wellesley-refresh" target="_blank">GitHub</a>
+        <a href="https://github.com/hl105/wellesley-refresh" target="_blank">Open Source at GitHub</a>
       </div>
     </div>
   </footer>
@@ -18,7 +18,7 @@
 
 <style scoped>
 .footer {
-  background-color: #01291B;
+  background-color: #687350;
   color: white;
   padding: 1.5rem 0;
   margin-top: 2rem;

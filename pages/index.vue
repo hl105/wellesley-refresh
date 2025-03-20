@@ -4,6 +4,9 @@
 const now: Date = new Date();
 const today: Date = now.toISOString().split('T')[0];
 
+function capitalize(word: string) {
+  return word.charAt(0).toUpperCase() + word.slice(1)
+}
 const getDates = (date: Date): string[] => {
   const dates: string[] = [];
   
@@ -49,24 +52,36 @@ for (const dhall of diningHalls) {
     <NuxtLink to="/" class="title-container">
         <img src="~/assets/images/logo.png" alt="Wellesley Refresh Logo" class="logo">
     </NuxtLink>
-    <h2>Today's {{ currentMeal }} Menu</h2>
-    <HeroComponent class="hidden md:block"/>
+    <div class="main-elements">
+      <HeroComponent class="hidden md:block"/>
+    
+    <h1 class="title"><ShowDateButton date="2025-03-20"/>{{ capitalize(currentMeal) }}</h1 class="title">
     <MenuListComponent :menus="menus" />
+    </div>
     <FooterComponent />
 </template>
 
 <style scoped>
+
+.title {
+  font-size: 1.5em;
+}
 .title-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100px;
-    border-bottom: 3px solid #000;
-    border-bottom-style: dashed;
+    border-bottom: 3px dotted #687350;
 }
 
 .logo {
     width: 200px;
     height: auto;
+}
+
+.main-elements {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1em;
 }
 </style>

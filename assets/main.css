@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
 body {
-  font-family: "DynaPuff", sans-serif;
+  font-family: "Work Sans", sans-serif;
   background-color: #fff2e2;
+  color: #01291B;
+}
+
+h1, h2 {
+  font-family: "DynaPuff", sans-serif;
 }

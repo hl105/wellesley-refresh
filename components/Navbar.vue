@@ -17,20 +17,24 @@ const handleScroll = () => {
     }
 }
 
+let hamburger_display= "flex"
+
 const toggleNavbar = () => {
     isNavbarVisible.value = !isNavbarVisible.value;
+    hamburger_display = isNavbarVisible.value ? "none" : "flex"
 }
+
 
 </script>
 
 
 <template>
     <div class="navbar-container">
-        <div class="hamburger" @click="toggleNavbar">☰</div>
+        <div class="hamburger" @click="toggleNavbar" :style="{ display: `${hamburger_display}`}"><p>☰</p></div>
         <aside class="Navbar" v-if="isNavbarVisible">
-            <div class="close-button" @click="toggleNavbar">X</div>
+            <div class="close-button" @click="toggleNavbar"><p>X</p></div>
             <div class="date-selector">
-                <h2> Nav Select Date</h2>
+                <h2> Jump to...</h2>
             </div>
         </aside>
     </div>
@@ -39,11 +43,23 @@ const toggleNavbar = () => {
 <style scoped>
 .hamburger {
   position: fixed;
-  top: 1rem;
+  top: 2rem;
   left: 1rem;
-  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
   z-index: 100;
+  background-color: #fff2e2;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px dotted #687350;
+}
+
+.hamburger p {
+  font-size: 1.5rem;
+  position: relative;
 }
 
 .Navbar {
@@ -52,7 +68,7 @@ const toggleNavbar = () => {
   left: 0;
   width: 250px;
   height: 100vh;
-  background: #01291B;
+  background: #687350;
   box-shadow: 2px 0 5px rgba(0,0,0,0.1);
   z-index: 99;
   padding: 4rem 1rem 1rem;
@@ -62,8 +78,23 @@ const toggleNavbar = () => {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  font-size: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
-  color: black;
+  z-index: 100;
+  background-color: #fff2e2;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px dotted #687350;
+}
+
+.close-button p {
+  font-size: 1.2em;
+}
+
+h2 {
+  color: #fff2e2;
 }
 </style>

@@ -4,7 +4,7 @@ const props = defineProps(["dhall", "dhallMenu"])
 
 <template>
     <div class="menu-container">
-        <h1> {{ props.dhall }}</h1>
+        <h1 class="menu-title"> {{ props.dhall }}</h1>
         <div v-if="props.dhallMenu.length === 0">
             No menu found
         </div>
@@ -18,6 +18,17 @@ const props = defineProps(["dhall", "dhallMenu"])
 .menu-container {
     padding: 1em;
     border-radius: 10px;
-    border: 3px solid #000;
+    border: 3px solid #687350;
+    position: relative;
+}
+
+.menu-title {
+    position: absolute;
+    background-color: #fff2e2;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 3px solid #687350;
+    top: -20px;
+    left: 5px;
 }
 </style>

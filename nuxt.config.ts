@@ -34,6 +34,7 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       DynaPuff: true,
+      "Work Sans": true,
     },
   },
 });

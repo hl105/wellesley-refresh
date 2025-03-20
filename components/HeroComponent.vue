@@ -14,9 +14,11 @@ const emits = defineEmits(["dateSelected"])
 
 <style scoped>
 .hero-section {
-    background: #f8f9fa;
-    padding: 2rem;
+    background: #fff2e2;
+    padding: 1rem;
     text-align: center;
+    font-family: "DynaPuff", sans-serif;
+    color: #687350;
 }
 
 </style> 

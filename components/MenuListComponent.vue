@@ -16,7 +16,6 @@ const props = defineProps(["menus"])
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5em;
   margin: 2em auto;
-  padding: 1em;
   max-width: 1200px;
 }
 </style>
