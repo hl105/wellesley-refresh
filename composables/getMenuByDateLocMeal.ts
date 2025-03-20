@@ -173,8 +173,8 @@ function sortByStations(dishes) {
   for (const stationOrder of stationOrders) {
     stationsSorted.push(stations[stationOrder]);
   }
-  
-  return stations;
+
+  return stationsSorted;
 }
 
 export function getMenuByDateLocMeal(date: string, dhall: string, meal: string) {
