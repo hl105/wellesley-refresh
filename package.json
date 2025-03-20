@@ -1,29 +1,38 @@
 {
-  "name": "nuxt-app",
-  "private": true,
-  "type": "module",
+  "name": "wellesley-refresh",
+  "version": "1.0.0",
+  "description": "Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.",
+  "main": "index.js",
   "scripts": {
+    "dev": "NODE_OPTIONS='--no-deprecation' nuxt dev",
     "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "start": "nuxt start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hl105/wellesley-refresh.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hl105/wellesley-refresh/issues"
+  },
+  "homepage": "https://github.com/hl105/wellesley-refresh#readme",
+  "devDependencies": {
+    "@nuxtjs/google-fonts": "^3.2.0",
+    "@nuxtjs/supabase": "^1.5.0",
+    "dotenv": "^16.4.7",
+    "typescript": "^5.8.2"
   },
   "dependencies": {
     "@nuxt/content": "^3.3.0",
     "@nuxt/eslint": "^1.2.0",
-    "@nuxt/fonts": "^0.11.0",
-    "@nuxt/icon": "^1.11.0",
-    "@nuxt/image": "^1.10.0",
     "@nuxt/scripts": "^0.11.2",
-    "@nuxt/test-utils": "^3.17.2",
-    "@nuxt/ui": "^3.0.0",
-    "@supabase/supabase-js": "^2.49.1",
-    "@unhead/vue": "^2.0.0-rc.8",
-    "eslint": "^9.22.0",
-    "nuxt": "^3.16.0",
-    "typescript": "^5.8.2",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "@tailwindcss/vite": "^4.0.14",
+    "nuxt": "^3.16.1",
+    "tailwindcss": "^4.0.14",
+    "vue": "^3.5.13"
   }
 }

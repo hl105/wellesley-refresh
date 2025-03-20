@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+body {
+  font-family: "DynaPuff", sans-serif;
+  background-color: #fff2e2;
+}
