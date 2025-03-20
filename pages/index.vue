@@ -50,7 +50,7 @@ for (const dhall of diningHalls) {
 <template>
     <Navbar class="block md:hidden" />
     <NuxtLink to="/" class="title-container">
-        <img src="~/assets/images/logo.png" alt="Wellesley Refresh Logo" class="logo">
+        <img src="~/assets/images/logo.svg" alt="Wellesley Refresh Logo" class="logo">
     </NuxtLink>
     <div class="main-elements">
       <HeroComponent class="hidden md:block"/>
