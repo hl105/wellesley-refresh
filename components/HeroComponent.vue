@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["dates"])
+defineProps({dates: Array})
 const emits = defineEmits(["dateSelected"])
 </script>
 
@@ -7,7 +7,7 @@ const emits = defineEmits(["dateSelected"])
     <div class="hero-section">
         <div class="date-selector">
             <h2>Jump to...</h2>
-            <DateButtonList :dates="props.dates" @dateSelected="emits('dateSelected', $event)" />
+            <DateButtonList :dates=dates />
         </div>
     </div>
 </template>
@@ -19,6 +19,7 @@ const emits = defineEmits(["dateSelected"])
     text-align: center;
     font-family: "DynaPuff", sans-serif;
     color: #687350;
+    margin: auto;
 }
 
 </style> 

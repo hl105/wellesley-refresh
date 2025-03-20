@@ -252,6 +252,7 @@ def get_menu(locationId: int, mealId: int, date: date = date.today()):
             "locationId": locationId,
             "mealId": mealId,
         },
+        verify=False
     )
 
     if response.ok:
@@ -317,7 +318,7 @@ def main() -> None:
                 date.today() + timedelta(days=7),
             ):  # get tomorrow too
                 menu = get_menu(dhall, meal, day)
-                push_data(dhall, meal, menu)
+                push_data(dhall.ID, meal, menu)
 
 
 if __name__ == "__main__":

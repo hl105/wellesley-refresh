@@ -151,36 +151,80 @@ function getPreferencesInfo(dish) {
   return preferencesInfo;
 }
 
-function sortByStations(dishes) {
-  let stations = {};
-  for (const dish of dishes) {
-    const stationOrder = dish['stationOrder'];
-    if (!(stationOrder in stations)) {
-      stations[stationOrder] = {};
-      stations['name'] = dish['station'];
+// function sortByStations(dishes) {
+//   let stations = {};
+//   for (const dish of dishes) {
+//     const stationOrder = dish['stationOrder'];
+//     if (!(stationOrder in stations)) {
+//       stations[stationOrder] = {};
+//       stations['name'] = dish['station'];
+//     }
+//     let thisStation = stations[stationOrder];
+
+//     thisStation[dish['name']] = {
+//       allergens: getAllergensInfo(dish['allergens']),
+//       preferences: getPreferencesInfo(dish['preferences']),
+//       description: dish['description'],
+//     };
+//   };
+
+//   let stationsSorted = [];
+//   const stationOrders = Object.keys(stations).sort();
+//   for (const stationOrder of stationOrders) {
+//     stationsSorted.push(stations[stationOrder]);
+//   }
+
+//   return stationsSorted;
+// }
+
+function prettifyData(data) {
+  let prettified = {};
+
+  console.log('inside function top')
+  data.forEach(dish => {
+    const date = dish['date'];
+    if (!(date in prettified)) {
+      prettified[date] = {};
     }
-    let thisStation = stations[stationOrder];
+    let meals = prettified[date];
+
+    const meal = dish['meal'];
+    if (!(meal in meals)) {
+      meals[meal] = {};
+    }
+    let food = meals[meal];
+
+    const dhall = dish['dhall'];
+    if (!(dhall in food)) {
+      food[dhall] = {};
+    }
+    let stations = food[dhall];
+
+    const station = dish['station'];
+    if (!(station in stations)) {
+      stations[station] = {};
+      stations['order'] = dish['stationOrder'];
+    }
+    let thisStation = stations[station];
 
     thisStation[dish['name']] = {
-      allergens: getAllergensInfo(dish['allergens']),
-      preferences: getPreferencesInfo(dish['preferences']),
+      // allergens: getAllergensInfo(dish['allergens']),
+      // preferences: getPreferencesInfo(dish['preferences']),
       description: dish['description'],
     };
-  };
+  });
 
-  let stationsSorted = [];
-  const stationOrders = Object.keys(stations).sort();
-  for (const stationOrder of stationOrders) {
-    stationsSorted.push(stations[stationOrder]);
-  }
-
-  return stationsSorted;
+  console.log('inside function')
+  return prettified;
 }
 
-export function getMenuByDateLocMeal(date: string, dhall: string, meal: string) {
+export function getMenuByDateLocMeal(date: string) {
   const client = useSupabaseClient();
-  const key = `menu-${date}-${dhall}-${meal}`;
-
+  const key = `menu-${date}`;
+  const today = new Date();
+  const fiveDaysFromNow = new Date(today);
+  fiveDaysFromNow.setDate(today.getDate() + 5);
+  
   /*
   Async Func returns query's data, and useAsyncData wraps it in a **reactive obj** with error, pending , refresh
   and returns it.
@@ -189,9 +233,10 @@ export function getMenuByDateLocMeal(date: string, dhall: string, meal: string) 
     const { data, error } = await client
       .from("Menu")
       .select("*")
-      .eq("date", date)
-      .eq("dhall", dhall)
-      .eq("meal", meal);
+      .gte("date", today.toISOString().split('T')[0]) 
+      .lte("date", fiveDaysFromNow.toISOString().split('T')[0]);
+
+
     if (error) {
       console.log("Error while fetching dining hall menu", error);
     }

@@ -1,31 +1,31 @@
 <script setup>
-const props = defineProps(["date"])
+const props = defineProps(["date", "color"])
 const today = new Date().toISOString().split('T')[0];
 
-const date = props.date === today ? "Today" : props.date;
+const date = props.date === today ? "Today" : props.date.slice(5);
 </script>
 
 <template>
-    <button>{{ date }}</button>
+    <a :style="{ color: `${props.color}`, borderColor: `${props.color}`}" :href="`#${props.date}`">{{ date }}</a>
 </template>
 
 <style scoped>
-button {
-    border: 3px solid #687350;
+a {
+    border: 3px solid;
     padding: 5px 10px;
     border-radius: 20px;
     cursor: pointer;
-    color: #687350;
     transition-duration: 0.3s;
     font-family: "DynaPuff", sans-serif;
+    display: block;
 }
 
-button:hover {
+a:hover {
     background-color: #687350;
-    color: #fff2e2;
+    color: #fff2e2 !important;
 }
 
-button:active {
+a:active {
   background-color: #687350;
 }
 

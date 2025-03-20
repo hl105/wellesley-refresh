@@ -1,12 +1,9 @@
 <script setup lang="ts">
+import { toRaw } from "vue";
 
-// TODO: DATE Implementation - might be better to move all the functions to a utils file
 const now: Date = new Date();
 const today: Date = now.toISOString().split('T')[0];
 
-function capitalize(word: string) {
-  return word.charAt(0).toUpperCase() + word.slice(1)
-}
 const getDates = (date: Date): string[] => {
   const dates: string[] = [];
 
@@ -31,42 +28,27 @@ const getCurrentMeal = () => {
   }
 };
 
-const dates = getDates(now);
+const { data: menu, error } = await getMenuByDateLocMeal(today);
 
-const diningHalls: String[] = ["Lulu", "Bates", "Stone D", "Tower"];
+const menus = toRaw(menu.value)
 
-// const currentMeal = getCurrentMeal();
-const currentMeal = "dinner" // FOR NOW FOR TESTING
-const menus = [];
-
-for (const dhall of diningHalls) {
-  const { data: menu } = await getMenuByDateLocMeal(today, dhall, currentMeal);
-  menus.push([dhall, menu.value]);
-
-}
+console.log(menus)
 
 </script>
 
 <template>
-  <Navbar class="block md:hidden" />
+  <Navbar class="block md:hidden" :dates="Object.keys(menus)" />
   <NuxtLink to="/" class="title-container">
     <img src="~/assets/images/logo.png" alt="Wellesley Refresh Logo" class="logo">
   </NuxtLink>
   <div class="main-elements">
-    <HeroComponent class="hidden md:block" />
-    <h1 class="title">
-      <ShowDateButton date="2025-03-20" />{{ capitalize(currentMeal) }}
-    </h1 class="title">
-    <MenuListComponent :menus="menus" />
+    <HeroComponent class="hidden md:block" :dates="Object.keys(menus)" />
+    <MenuDisplay :menus="menus" />
   </div>
   <FooterComponent />
 </template>
 
 <style scoped>
-.title {
-  font-size: 1.5em;
-}
-
 .title-container {
   display: flex;
   justify-content: center;

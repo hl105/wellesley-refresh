@@ -3,6 +3,8 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const isNavbarVisible = ref(false);
 
+defineProps({dates: Array})
+
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
 });
@@ -31,10 +33,21 @@ const toggleNavbar = () => {
 <template>
     <div class="navbar-container">
         <div class="hamburger" @click="toggleNavbar" :style="{ display: `${hamburger_display}`}"><p>☰</p></div>
-        <aside class="Navbar" v-if="isNavbarVisible">
-            <div class="close-button" @click="toggleNavbar"><p>X</p></div>
+        <aside class="Navbar" v-if="isNavbarVisible" @click="toggleNavbar">
+            <div class="close-button"><p>X</p></div>
             <div class="date-selector">
                 <h2> Jump to...</h2>
+                <br />
+                <div class="date-button-list">
+                  <DateButton 
+                      v-for="date in dates" 
+                      :key="date" 
+                      :date="date"
+                      @click="selectDate(date)"
+                      :class="{ active: clickedDate === date }"
+                      :color="'#fff2e2'"
+                  />
+    </div>
             </div>
         </aside>
     </div>
@@ -96,5 +109,12 @@ const toggleNavbar = () => {
 
 h2 {
   color: #fff2e2;
+}
+
+.date-button-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
 }
 </style>

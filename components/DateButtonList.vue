@@ -20,6 +20,7 @@ const selectDate = (date) => {
             :date="date"
             @click="selectDate(date)"
             :class="{ active: clickedDate === date }"
+            :color="'#687350'"
         />
     </div>
 </template>
@@ -29,5 +30,6 @@ const selectDate = (date) => {
     display: flex;
     flex-direction: row;
     gap: 10px;
+    justify-content: center;
 }
 </style>

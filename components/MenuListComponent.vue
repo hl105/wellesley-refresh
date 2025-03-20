@@ -1,12 +1,13 @@
 <script setup lang="ts">
-const props = defineProps(["menus"])
+defineProps({
+  menus: Object
+});
+
 </script>
 
 <template>
-    <div class="menu-grid">
-      <div v-for="menu in props.menus" :key="menu.id">
-        <MenuComponent :dhall="menu[0]" :dhallMenu="menu[1]"/>
-      </div>
+    <div class="menu-grid" v-for="(items, dhall) in menus" :key="dhall">
+        <MenuComponent :dhall=dhall :dhallMenu=items />
     </div>
 </template>
 
