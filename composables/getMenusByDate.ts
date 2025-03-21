@@ -89,12 +89,12 @@ function filterPastMeals(menus: PrettifiedData, now: Date): PrettifiedData {
   if (filteredData[todayStr]) {
     const todayMeals = { ...filteredData[todayStr] }; // grab meals object for today
     const currentHour = now.getHours();
-    console.log("currentHour", currentHour);
+    // console.log("currentHour", currentHour);
 
-    if (currentHour > 19) {
-      delete filteredData[todayStr]; // drop entire day (breakfast, lunch, dinner) because it's past 7pm
-    } else if (currentHour > 14) {
-      // drop breakfast, lunch if past 2pm
+    if (currentHour > 23) {
+      delete filteredData[todayStr]; // drop entire day (breakfast, lunch, dinner) because it's past 7pm EST (23 UTC)
+    } else if (currentHour > 18) {
+      // drop breakfast, lunch if past 2pm EST
       delete todayMeals["breakfast"];
       delete todayMeals["lunch"];
       filteredData[todayStr] = todayMeals;
