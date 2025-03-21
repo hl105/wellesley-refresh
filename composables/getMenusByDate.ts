@@ -72,11 +72,37 @@ function prettifyData(data: Tables<"Menu">[]) {
   return prettified;
 }
 
+/**
+ * Filter out past meals based on the current time
+ * @param meals Prettified data to filter
+ * @param now Current date and time
+ * @returns Filtered prettified data
+ */
+function filterPastMeals(menus: PrettifiedData, now: Date): PrettifiedData {
+  const filteredData: PrettifiedData = { ...menus}; // shallow copy bc we only modify the current date
+
+  const todayStr = now.toISOString().split("T")[0];
+
+  if (filteredData[todayStr]) {
+    const todayMeals = { ...filteredData[todayStr] }; // grab meals object for today
+    const currentHour = now.getHours();
+    console.log("currentHour", currentHour);
+
+    if (currentHour >= 19) {
+      delete filteredData[todayStr]; // drop entire day because it's past 7pm
+    } else if (currentHour >= 14) {
+      delete todayMeals["breakfast"];
+      filteredData[todayStr] = todayMeals;
+    }
+  }
+
+  return filteredData;
+}
 
 /**
  *
  * @param date Date to query five day's worth of menus from
- * @returns formatted menus
+ * @returns formatted menus with past meals filtered out
  */
 export function getMenusByDate(date: Date) {
   const client = useSupabaseClient();
@@ -94,6 +120,7 @@ export function getMenusByDate(date: Date) {
     if (error) {
       console.log("Error while fetching dining hall menu", error);
     }
-    return prettifyData(data as Tables<"Menu">[]);
+    const menus =  prettifyData(data as Tables<"Menu">[]);
+    return filterPastMeals(menus, date);
   });
 }
