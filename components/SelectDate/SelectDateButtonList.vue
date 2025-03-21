@@ -14,16 +14,11 @@ const selectDate = (date) => {
 
 <template>
     <div class="hero-section">
-        <h2>Jump to...</h2>
+
         <div class="date-button-list">
-            <SelectDateButton 
-                v-for="date in props.dates" 
-                :key="date" 
-                :date="date"
-                @click="selectDate(date)"
-                :class="{ active: clickedDate === date }"
-                :color="'#687350'"
-            />
+            <h2 class="jump">Jump to...</h2>
+            <SelectDateButton v-for="date in props.dates" :key="date" :date="date" @click="selectDate(date)"
+                :class="{ active: clickedDate === date }" :color="'#687350'" />
         </div>
     </div>
 </template>
@@ -34,15 +29,26 @@ const selectDate = (date) => {
     flex-direction: row;
     gap: 10px;
     justify-content: center;
+    align-items: center;
 }
 
 .hero-section {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
     background: #fff2e2;
     padding: 1rem;
     color: #687350;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 3px dotted #687350;
+}
+
+@media screen and (min-width: 770px) {
+    .hero-section {
+        display: flex;
+    }
 }
 </style>

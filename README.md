@@ -13,6 +13,6 @@ Wellesley Refresh is **not** more accurate than Wellesley Fresh's official menu.
 - [x] Open page starting from the current/next meal, rather than always from breakfast.
 - [ ] Add allergen and preference icons next to each dish
 - [ ] Tidy up the layout
-- [ ] Show day of week next to date. 
+- [x] Show day of week next to date. 
 - [x] Change columns for grid to be 1, 2, or 4 columns (not 3)
 - [x] Deploy the website

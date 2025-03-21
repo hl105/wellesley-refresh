@@ -2,7 +2,12 @@
 const props = defineProps(["date"])
 const today = new Date().toISOString().split('T')[0];
 
-const date = props.date === today ? "Today" : props.date;
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+}
+
+const date = props.date === today ? "TODAY" : formatDate(props.date);
 const backgroundC = props.date === today ? "#F3A203" : "#687350";
 
 </script>
@@ -18,6 +23,7 @@ button {
     border-radius: 25px;
     color: #fff2e2;
     transition-duration: 0.3s;
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: 1.3em;
 }
 </style>

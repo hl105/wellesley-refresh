@@ -2,7 +2,13 @@
 const props = defineProps(["date", "color"])
 const today = new Date().toISOString().split('T')[0];
 
-const date = props.date === today ? "Today" : props.date.slice(5);
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { weekday: 'long'});
+}
+
+const date = props.date === today ? "Today" : formatDate(props.date);
+
 </script>
 
 <template>

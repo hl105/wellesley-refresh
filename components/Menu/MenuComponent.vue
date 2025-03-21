@@ -17,7 +17,6 @@ defineProps({ dhall: String, dhallMenu: Object });
             <p>{{ dishName }}</p>
           </li>
         </ul>
-        <br />
       </template>
     </div>
   </div>
@@ -42,6 +41,14 @@ defineProps({ dhall: String, dhallMenu: Object });
 }
 
 p {
+  font-size: 0.8em;
+}
+
+.dish-list {
+  padding-bottom: 5px;
+}
+
+h2 {
   font-size: 0.8em;
 }
 </style>
