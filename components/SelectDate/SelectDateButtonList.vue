@@ -38,7 +38,7 @@ const selectDate = (date) => {
     align-items: center;
     gap: 1rem;
     background: #fff2e2;
-    padding: 0rem 1rem 1rem 1rem;
+    padding: 1rem;
     color: #687350;
     position: sticky;
     top: 0;

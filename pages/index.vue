@@ -27,7 +27,8 @@ const menus = computed(() => menu.value)
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 90px;
+  height: 80px;
+  margin-top: 15px;
 }
 
 .logo {
