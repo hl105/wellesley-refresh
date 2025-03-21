@@ -53,12 +53,18 @@ p {
   font-size: 0.8em;
 }
 
-.dish-list {
-  padding-bottom: 5px;
+.dish-item {
+  padding-bottom: .2em;
+  line-height: 1em;
 }
 
 ul .dish-list {
   padding-bottom: 0px;
+}
+
+.station-title {
+  margin-top: .2em;
+  font-size: 1em;
 }
 
 h2 {
