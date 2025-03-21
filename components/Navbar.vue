@@ -61,14 +61,16 @@ const toggleNavbar = () => {
   left: 1rem;
   width: 2rem;
   height: 2rem;
+  padding-bottom: 4px;
   cursor: pointer;
   z-index: 100;
-  background-color: #fff2e2;
+  background-color: #687350;
   border-radius: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px dotted #687350;
+  /* border: 3px dotted #fff2e2; */
+  color: #fff2e2;
 }
 
 .hamburger p {
