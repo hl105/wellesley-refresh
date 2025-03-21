@@ -27,6 +27,11 @@ export function formatMonth(month: number) {
     }
 }
 
+/**
+ * Format a date string into a Day, Month.Date format
+ * @param dateString dateString in the format YYYY-MM-DD
+ * @returns formatted date string (e.g. "Monday, Mar. 24")
+ */
 export function formatDate(dateString: string) {
     const [year, month, day] = dateString.split('-').map(Number);
     const date = new Date(year, month - 1, day);

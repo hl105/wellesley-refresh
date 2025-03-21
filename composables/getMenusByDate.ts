@@ -34,7 +34,7 @@ function getPreferencesInfo(dish) {
 function prettifyData(data: Tables<"Menu">[]) {
   let prettified: PrettifiedData = {};
 
-  console.log("inside function top");
+  // console.log("inside function top");
   data.forEach((dish) => {
     const date = dish["date"];
     if (!(date in prettified)) {
@@ -71,7 +71,7 @@ function prettifyData(data: Tables<"Menu">[]) {
     };
   });
 
-  console.log("inside function");
+  // console.log("inside function");
   return prettified;
 }
 
