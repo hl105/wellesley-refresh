@@ -16,6 +16,7 @@ onUnmounted(() => {
 const handleScroll = () => {
     if (isNavbarVisible.value) {
         isNavbarVisible.value = false;
+        hamburger_display = "flex"
     }
 }
 
@@ -23,7 +24,7 @@ let hamburger_display= "flex"
 
 const toggleNavbar = () => {
     isNavbarVisible.value = !isNavbarVisible.value;
-    // hamburger_display = isNavbarVisible.value ? "none" : "flex"
+    hamburger_display = isNavbarVisible.value ? "none" : "flex"
 }
 
 
