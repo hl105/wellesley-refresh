@@ -5,8 +5,8 @@ const emit = defineEmits(['close'])
 <template>
     <div class="popup-overlay">
         <div class="popup-content">
-            <h2>Disclaimer</h2>
-            <p>This is the *exact* same menu on the Wellesley Fresh website. If the menu is incorrect here, it is because it is also incorrect there!</p>
+            <h2 class="disclaimer-text">Disclaimer</h2>
+            <p class="disclaimer-text">This is the *exact* same menu on the Wellesley Fresh website. If the menu is incorrect here, it is because it is also incorrect there!</p>
             <button class="close-button" @click="emit('close')">close</button>
         </div>
     </div>
@@ -29,14 +29,15 @@ const emit = defineEmits(['close'])
     align-items: center;
     justify-content: center;
     gap: 0.8em;
-    background-color: #687350;
+    background-color: #01291B;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 1em;
     padding: 1em;
-    border-width: 0.2em;
+    border-width: 5px;
+    border-color: black;
 }
 
 .close-button {
@@ -48,11 +49,16 @@ const emit = defineEmits(['close'])
     display: flex;
     align-items: center;
     justify-content: center;
-    border-width: 3px;
+    border-width: 4px;
+    border-color: black;
 }
 
 .close-button:hover {
     background-color: #D3D3D3;
-    border-width: 3px;
 }
+
+.disclaimer-text {
+    text-align: center;
+    color: white;
+}   
 </style>
