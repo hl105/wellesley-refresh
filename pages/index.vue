@@ -6,7 +6,7 @@ const { data: menu, error } = await getMenusByDate(now);
 
 
 const menus = computed(() => menu.value)
-console.log("menus", menus.value);
+// console.log("menus", menus.value);
 </script>
 
 <template>

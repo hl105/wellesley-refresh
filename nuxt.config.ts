@@ -3,7 +3,19 @@ require("dotenv").config();
 import tailwindcss from "@tailwindcss/vite";
 
 
+
 export default defineNuxtConfig({
+  app: {
+    head: {
+      title: "Wellesley Refresh",
+      meta: [
+        { name: "description", content: "Reimagining the Wellesley AVI Fresh Website" },
+      ],
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      ],
+    },
+  },
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
   vite: {

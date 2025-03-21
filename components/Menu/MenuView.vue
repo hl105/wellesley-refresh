@@ -5,7 +5,7 @@ const props = defineProps<{
   menus: PrettifiedData
 }>();
 
-const sortedDates = computed(() => {
+const sortedDates = computed(() => { // sort dates by time
   return Object.keys(props.menus).sort((a: string, b: string) => {
     return new Date(a).getTime() - new Date(b).getTime();
   });
