@@ -4,7 +4,7 @@
   "description": "Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_OPTIONS='--no-deprecation' nuxt dev",
+    "dev": "NODE_OPTIONS='--no-deprecation' TZ=UTC nuxt dev",
     "build": "nuxt build",
     "start": "nuxt start"
   },
