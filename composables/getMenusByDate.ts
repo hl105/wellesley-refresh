@@ -63,10 +63,10 @@ function prettifyData(data: Tables<"Menu">[]) {
       stations["order"] = dish["stationOrder"];
     }
     let thisStation = stations[station];
-
+    console.log(dish)
     thisStation[dish["name"]] = {
-      // allergens: getAllergensInfo(dish['allergens']),
-      // preferences: getPreferencesInfo(dish['preferences']),
+      allergens: getAllergensInfo(dish),
+      preferences: getPreferencesInfo(dish),
       description: dish["description"],
     };
   });

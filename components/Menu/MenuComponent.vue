@@ -3,6 +3,7 @@ defineProps<{
   dhall: string;
   dhallMenu: Record<string, any>;
 }>();
+
 </script>
 
 <template>
@@ -16,13 +17,15 @@ defineProps<{
         <template v-if="station !== 'order'">
           <h2 class="station-title">{{ station }}</h2>
           <ul class="dish-list">
-            <li
-              v-for="(details, dishName) in dishes"
-              :key="dishName"
-              class="dish-item"
-            >
+            <div v-for="(details, dishName) in dishes" :key="dishName" class="dish-item">
               <p>{{ dishName }}</p>
-            </li>
+                <img v-for="allergen in details.allergens" :key="allergen.id" :src="allergen.img" :alt="allergen.name"
+                  class="icon" />
+                <img v-for="preference in details.preferences" :key="preference.id" :src="preference.img"
+                  :alt="preference.name" class="icon" />
+
+
+            </div>
           </ul>
         </template>
       </div>
@@ -36,7 +39,7 @@ defineProps<{
   border-radius: 10px;
   border: 3px dotted #687350;
   position: relative;
-  
+
 }
 
 .menu-title {
@@ -53,11 +56,6 @@ p {
   font-size: 0.8em;
 }
 
-.dish-item {
-  padding-bottom: .2em;
-  line-height: 1em;
-}
-
 ul .dish-list {
   padding-bottom: 0px;
 }
@@ -69,5 +67,22 @@ ul .dish-list {
 
 h2 {
   font-size: 0.8em;
+}
+
+.dish-item {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  gap: 5px;
+  width: fit-content;
+  padding-bottom: .2em;
+  line-height: 1em;
+  align-items: center;
+}
+
+.icon {
+  width: 10px;
+  height: 10px;
+  opacity: 0.8;
 }
 </style>
