@@ -31,7 +31,6 @@ const showPopupCaption = ref(false);
 
 .caption-button {
     text-decoration: underline;
-    background-color: white;
     color: #687350;
     cursor: pointer;
     transition-duration: 0.3s;
