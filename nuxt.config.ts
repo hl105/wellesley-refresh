@@ -9,10 +9,10 @@ export default defineNuxtConfig({
     head: {
       title: "Wellesley Refresh",
       meta: [
-        { name: "description", content: "Reimagining the Wellesley AVI Fresh Website" },
+        { name: "description", content: "Refreshing the Wellesley AVI Fresh Website" },
       ],
       link: [
-        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       ],
     },
   },
