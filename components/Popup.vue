@@ -1,0 +1,57 @@
+<script setup>
+const emit = defineEmits(['close'])
+</script>
+
+<template>
+    <div class="popup-overlay">
+        <div class="popup-content">
+            <p>Disclaimer: This is the *exact* same menu on the Wellesley Fresh website. If the menu is incorrect here, it is because it is also incorrect there!</p>
+            <button class="close-button" @click="emit('close')">close</button>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8em;
+    background-color: #687350;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1em;
+    padding: 1em;
+    border-width: 0.2em;
+}
+
+.close-button {
+    background-color: #fff2e2;
+    border-radius: 1em;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 3px;
+}
+
+.close-button:hover {
+    background-color: #D3D3D3;
+    border-width: 3px;
+}
+</style>

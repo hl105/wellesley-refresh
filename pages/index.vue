@@ -5,9 +5,18 @@ const { data: menu, error } = await getMenusByDate(now);
 
 const menus = computed(() => menu.value)
 // console.log("menus", menus.value);
+
+const showPopup = ref(false);
+onMounted(() => {
+  if (!localStorage.getItem('popupShown')) { // if popup hasn't been shown yet
+      showPopup.value = true;
+      localStorage.setItem('popupShown', 'true');
+    }
+})
 </script>
 
 <template>
+  <Popup v-if="showPopup" @close="showPopup = false" />
   <NuxtLink to="/" class="title-container">
     <img src="~/assets/images/logo.png" alt="Wellesley Refresh Logo" class="logo">
   </NuxtLink>
