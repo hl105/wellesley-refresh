@@ -50,10 +50,10 @@ function prettifyData(data: Tables<"Menu">[]) {
 
     const dhall = dish["dhall"];
     if (!(dhall in food)) {
-      food['Bates'] = {};
-      food['Stone D'] = {};
-      food['Lulu'] = {};
-      food['Tower'] = {};
+      food["Bates"] = {};
+      food["Stone D"] = {};
+      food["Lulu"] = {};
+      food["Tower"] = {};
     }
     let stations = food[dhall];
 
@@ -82,7 +82,7 @@ function prettifyData(data: Tables<"Menu">[]) {
  * @returns Filtered prettified data
  */
 function filterPastMeals(menus: PrettifiedData, now: Date): PrettifiedData {
-  const filteredData: PrettifiedData = { ...menus}; // shallow copy bc we only modify the current date
+  const filteredData: PrettifiedData = { ...menus }; // shallow copy bc we only modify the current date
 
   const todayStr = now.toISOString().split("T")[0];
 
@@ -91,10 +91,12 @@ function filterPastMeals(menus: PrettifiedData, now: Date): PrettifiedData {
     const currentHour = now.getHours();
     console.log("currentHour", currentHour);
 
-    if (currentHour >= 19) {
-      delete filteredData[todayStr]; // drop entire day because it's past 7pm
-    } else if (currentHour >= 14) {
+    if (currentHour > 19) {
+      delete filteredData[todayStr]; // drop entire day (breakfast, lunch, dinner) because it's past 7pm
+    } else if (currentHour > 14) {
+      // drop breakfast, lunch if past 2pm
       delete todayMeals["breakfast"];
+      delete todayMeals["lunch"];
       filteredData[todayStr] = todayMeals;
     }
   }
@@ -123,7 +125,7 @@ export function getMenusByDate(date: Date) {
     if (error) {
       console.log("Error while fetching dining hall menu", error);
     }
-    const menus =  prettifyData(data as Tables<"Menu">[]);
+    const menus = prettifyData(data as Tables<"Menu">[]);
     return filterPastMeals(menus, date);
   });
 }
