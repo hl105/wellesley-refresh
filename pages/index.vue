@@ -39,5 +39,6 @@ const menus = computed(() => menu.value)
   max-width: 1200px;
   margin: auto;
   padding: 1em;
+  margin-top: -70px;
 }
 </style>
