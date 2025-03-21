@@ -62,6 +62,10 @@ ul .dish-list {
   padding-bottom: 0px;
 }
 
+.station-title {
+  margin-top: .2em;
+}
+
 h2 {
   font-size: 0.8em;
 }
