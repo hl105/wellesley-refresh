@@ -54,7 +54,7 @@ p {
 }
 
 .dish-item {
-  padding-bottom: .5em;
+  padding-bottom: .2em;
   line-height: 1em;
 }
 
