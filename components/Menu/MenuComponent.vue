@@ -54,7 +54,8 @@ p {
 }
 
 .dish-list {
-  padding-bottom: 5px;
+  padding-bottom: .1em;
+  line-height: 1em;
 }
 
 ul .dish-list {
