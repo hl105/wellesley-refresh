@@ -51,6 +51,10 @@ p {
   padding-bottom: 5px;
 }
 
+ul .dish-list {
+  padding-bottom: 0px;
+}
+
 h2 {
   font-size: 0.8em;
 }
