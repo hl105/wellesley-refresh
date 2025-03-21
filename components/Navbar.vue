@@ -23,7 +23,7 @@ let hamburger_display= "flex"
 
 const toggleNavbar = () => {
     isNavbarVisible.value = !isNavbarVisible.value;
-    hamburger_display = isNavbarVisible.value ? "none" : "flex"
+    // hamburger_display = isNavbarVisible.value ? "none" : "flex"
 }
 
 
@@ -32,7 +32,7 @@ const toggleNavbar = () => {
 
 <template>
     <div class="navbar-container">
-        <div class="hamburger" @click="toggleNavbar" :style="{ display: `${hamburger_display}`}"><p>☰</p></div>
+      <div class="hamburger" @click="toggleNavbar" :style="{ display: `${hamburger_display}`}"><p>☰</p></div>
         <aside class="Navbar" v-if="isNavbarVisible" @click="toggleNavbar">
             <div class="close-button"><p>X</p></div>
             <div class="date-selector">

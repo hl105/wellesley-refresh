@@ -5,7 +5,8 @@ defineProps({ dhall: String, dhallMenu: Object });
 <template>
   <div class="menu-container">
     <h1 class="menu-title">{{ dhall }}</h1>
-    <div v-for="(dishes, station) in dhallMenu" :key="station">
+    <div class="menu-content">
+      <div v-for="(dishes, station) in dhallMenu" :key="station">
       <template v-if="station !== 'order'">
         <h2 class="station-title">{{ station }}</h2>
         <ul class="dish-list">
@@ -19,6 +20,7 @@ defineProps({ dhall: String, dhallMenu: Object });
         </ul>
       </template>
     </div>
+    </div>
   </div>
 </template>
 
@@ -28,6 +30,7 @@ defineProps({ dhall: String, dhallMenu: Object });
   border-radius: 10px;
   border: 3px dotted #687350;
   position: relative;
+  
 }
 
 .menu-title {
@@ -51,4 +54,9 @@ p {
 h2 {
   font-size: 0.8em;
 }
+
+.menu-content {
+  margin-top: 0.5em;
+}
+
 </style>
