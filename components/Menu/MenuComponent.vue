@@ -53,8 +53,8 @@ p {
   font-size: 0.8em;
 }
 
-.dish-list {
-  padding-bottom: .1em;
+.dish-item {
+  padding-bottom: .5em;
   line-height: 1em;
 }
 
