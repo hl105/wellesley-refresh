@@ -39,7 +39,7 @@ const toggleNavbar = () => {
                 <h2> Jump to...</h2>
                 <br />
                 <div class="date-button-list">
-                  <DateButton 
+                  <SelectDateButton 
                       v-for="date in dates" 
                       :key="date" 
                       :date="date"

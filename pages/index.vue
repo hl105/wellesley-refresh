@@ -1,51 +1,27 @@
 <script setup lang="ts">
 import { toRaw } from "vue";
 
-const now: Date = new Date();
-const today: Date = now.toISOString().split('T')[0];
+const today: Date = new Date();
+const { data: menu, error } = await getMenusByDate(today);
 
-const getDates = (date: Date): string[] => {
-  const dates: string[] = [];
-
-  for (let i = 0; i < 4; i++) {
-    const currentDate = new Date(date);
-    currentDate.setDate(date.getDate() + i);
-    dates.push(currentDate.toISOString().split('T')[0]);
-  }
-
-  return dates;
-};
-
-const getCurrentMeal = () => {
-  const hour = now.getHours();
-
-  if (hour < 10) {
-    return "breakfast";
-  } else if (hour < 14) {
-    return "lunch";
-  } else {
-    return "dinner";
-  }
-};
-
-const { data: menu, error } = await getMenuByDateLocMeal(today);
-
-const menus = toRaw(menu.value)
-
-console.log(menus)
+const menus = computed(() => {
+  return toRaw(menu.value) ? menu.value : null;
+})
 
 </script>
 
 <template>
-  <Navbar class="block md:hidden" :dates="Object.keys(menus)" />
   <NuxtLink to="/" class="title-container">
     <img src="~/assets/images/logo.png" alt="Wellesley Refresh Logo" class="logo">
   </NuxtLink>
-  <div class="main-elements">
-    <HeroComponent class="hidden md:block" :dates="Object.keys(menus)" />
-    <MenuDisplay :menus="menus" />
+  <div v-if="menus">
+    <Navbar class="block md:hidden" :dates="Object.keys(menus).sort()" />
+    <div class="main-elements">
+      <SelectDateButtonList class="hidden md:block" :dates="Object.keys(menus).sort()" />
+      <MenuDisplay :menus="menus" />
+    </div>
+    <FooterComponent />
   </div>
-  <FooterComponent />
 </template>
 
 <style scoped>
