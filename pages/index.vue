@@ -2,29 +2,29 @@
 const now: Date = new Date();
 const { data: menu, error } = await getMenusByDate(now);
 
-
 const menus = computed(() => menu.value)
 // console.log("menus", menus.value);
 // console.log("menus", menus.value ? Object.keys(menus.value) : []);
-const showPopup = ref(false);
+const showPopupDisclaimer = ref(false);
 onMounted(() => {
   if (!localStorage.getItem('popupShown')) { // if popup hasn't been shown yet
-      showPopup.value = true;
+      showPopupDisclaimer.value = true;
       localStorage.setItem('popupShown', 'true');
     }
 })
 </script>
 
 <template>
-  <Popup v-if="showPopup" @close="showPopup = false" />
+  <PopupDisclaimer v-if="showPopupDisclaimer" @close="showPopupDisclaimer = false" />
   <NuxtLink to="/" class="title-container">
     <img src="~/assets/images/logo.png" alt="Wellesley Refresh Logo" class="logo">
   </NuxtLink>
   <div v-if="menus">
     <Navbar class="block md:hidden" :dates="Object.keys(menus).sort()" />
     <SelectDateButtonList :dates="Object.keys(menus).sort()" />
+    <MoreOptions />
     <div class="main-elements">
-      <MenuView :menus="menus" />
+      <MenuView :menus="menus"" />
     </div>
     <FooterComponent />
   </div>

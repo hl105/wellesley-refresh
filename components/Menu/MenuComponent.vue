@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { toggled } from '@/composables/useToggle';
+
 defineProps<{
   dhall: string;
   dhallMenu: Record<string, any>;
@@ -19,10 +21,12 @@ defineProps<{
           <ul class="dish-list">
             <div v-for="(details, dishName) in dishes" :key="dishName" class="dish-item">
               <p>{{ dishName }}</p>
+              <div v-if="toggled" class="more-options">
                 <img v-for="preference in details.preferences" :key="preference.id" :src="preference.img"
                   :alt="preference.name" class="icon" />
                 <img v-for="allergen in details.allergens" :key="allergen.id" :src="allergen.img" :alt="allergen.name"
                   class="icon" />
+              </div>
             </div>
           </ul>
         </template>
@@ -84,5 +88,10 @@ h2 {
   width: 10px;
   height: 10px;
   opacity: 0.8;
+}
+.more-options {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
 }
 </style>

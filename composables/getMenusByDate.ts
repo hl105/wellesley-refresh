@@ -63,7 +63,7 @@ function prettifyData(data: Tables<"Menu">[]) {
       stations["order"] = dish["stationOrder"];
     }
     let thisStation = stations[station];
-    console.log(dish)
+    // console.log(dish)
     thisStation[dish["name"]] = {
       allergens: getAllergensInfo(dish),
       preferences: getPreferencesInfo(dish),

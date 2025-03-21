@@ -43,7 +43,6 @@ const selectDate = (date) => {
     position: sticky;
     top: 0;
     z-index: 10;
-    border-bottom: 3px dotted #687350;
 }
 
 @media screen and (min-width: 770px) {
