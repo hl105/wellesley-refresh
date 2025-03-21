@@ -27,7 +27,7 @@ defineProps({ dhall: String, dhallMenu: Object });
 
 <style scoped>
 .menu-container {
-  padding: 1em;
+  padding: 2em 1em 1em 1em;
   border-radius: 10px;
   border: 3px dotted #687350;
   position: relative;
