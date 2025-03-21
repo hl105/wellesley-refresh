@@ -5,12 +5,12 @@ Wellesley Refresh presents meals at Bates, Stone D, Lulu, and Tower side-by-side
 
 
 ## Disclaimer
-Wellesley Refresh is **not** more accurate than Wellesley Fresh's official menu. Wellesley Refresh relies on the data that Wellesley Fresh provides, so if Wellesley Fresh says Lulu is serving burgers, so will Wellesley Refresh, even if Lulu actually has fried rice. Crowdsourcing menus is a possible solution, and may be implemented in the future, but this poses much bigger technical challenges. For now, Wellesley Refresh is only a UI refresh on the dining hall menus.
+Wellesley Refresh is **not** more accurate than Wellesley Fresh's official menu. Wellesley Refresh relies on the data that Wellesley Fresh provides, so if Wellesley Fresh says Lulu is serving burgers, so will Wellesley Refresh, even if Lulu actually has fried rice. Another known example is dinner menus showing on the lunch menu -- it's because it's how it's shown on the Wellesley Fresh site! Crowdsourcing menus is a possible solution, and may be implemented in the future, but this poses much bigger technical challenges. For now, Wellesley Refresh is only a UI refresh on the dining hall menus.
 
 
 ## Roadmap
 - [ ] Open page starting from the current/next meal, rather than always from breakfast.
 - [ ] Add allergen and preference icons next to each dish
 - [ ] Tidy up the layout
-  - [ ] Change columns for grid to be 1, 2, or 4 columns (not 3)
-- [ ] Create a plan for deploying the website
+- [x] Change columns for grid to be 1, 2, or 4 columns (not 3)
+- [x] Deploy the website

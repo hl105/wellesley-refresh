@@ -29,4 +29,9 @@ a:active {
   background-color: #687350;
 }
 
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 </style>

@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { toRaw } from "vue";
 
-const today: Date = new Date();
-const { data: menu, error } = await getMenusByDate(today);
+const now: Date = new Date();
+const { data: menu, error } = await getMenusByDate(now);
 
-const menus = computed(() => {
-  return toRaw(menu.value) ? menu.value : null;
-})
 
+const menus = computed(() => menu.value)
+console.log("menus", menus.value);
 </script>
 
 <template>
@@ -18,7 +17,7 @@ const menus = computed(() => {
     <Navbar class="block md:hidden" :dates="Object.keys(menus).sort()" />
     <div class="main-elements">
       <SelectDateButtonList class="hidden md:block" :dates="Object.keys(menus).sort()" />
-      <MenuDisplay :menus="menus" />
+      <MenuView :menus="menus" />
     </div>
     <FooterComponent />
   </div>

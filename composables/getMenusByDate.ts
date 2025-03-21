@@ -72,6 +72,7 @@ function prettifyData(data: Tables<"Menu">[]) {
   return prettified;
 }
 
+
 /**
  *
  * @param date Date to query five day's worth of menus from
