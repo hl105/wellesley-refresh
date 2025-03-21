@@ -5,7 +5,8 @@ const emit = defineEmits(['close'])
 <template>
     <div class="popup-overlay">
         <div class="popup-content">
-            <p>Disclaimer: This is the *exact* same menu on the Wellesley Fresh website. If the menu is incorrect here, it is because it is also incorrect there!</p>
+            <h2>Disclaimer</h2>
+            <p>This is the *exact* same menu on the Wellesley Fresh website. If the menu is incorrect here, it is because it is also incorrect there!</p>
             <button class="close-button" @click="emit('close')">close</button>
         </div>
     </div>
