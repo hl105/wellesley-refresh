@@ -7,6 +7,10 @@ defineProps({ dhall: String, dhallMenu: Object });
     <h1 class="menu-title">{{ dhall }}</h1>
     <div class="menu-content">
       <div v-for="(dishes, station) in dhallMenu" :key="station">
+    <div v-if="Object.keys(dhallMenu).length === 0">
+      No menu items :(
+    </div>
+    <div v-for="(dishes, station) in dhallMenu" :key="station">
       <template v-if="station !== 'order'">
         <h2 class="station-title">{{ station }}</h2>
         <ul class="dish-list">
@@ -26,7 +30,7 @@ defineProps({ dhall: String, dhallMenu: Object });
 
 <style scoped>
 .menu-container {
-  padding: 1em;
+  padding: 2em 1em 1em 1em;
   border-radius: 10px;
   border: 3px dotted #687350;
   position: relative;
@@ -49,6 +53,10 @@ p {
 
 .dish-list {
   padding-bottom: 5px;
+}
+
+ul .dish-list {
+  padding-bottom: 0px;
 }
 
 h2 {

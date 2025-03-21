@@ -50,7 +50,10 @@ function prettifyData(data: Tables<"Menu">[]) {
 
     const dhall = dish["dhall"];
     if (!(dhall in food)) {
-      food[dhall] = {};
+      food['Bates'] = {};
+      food['Stone D'] = {};
+      food['Lulu'] = {};
+      food['Tower'] = {};
     }
     let stations = food[dhall];
 
