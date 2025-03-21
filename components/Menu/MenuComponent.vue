@@ -64,6 +64,7 @@ ul .dish-list {
 
 .station-title {
   margin-top: .2em;
+  font-size: 1em;
 }
 
 h2 {
