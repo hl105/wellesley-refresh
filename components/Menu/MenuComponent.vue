@@ -8,7 +8,7 @@ defineProps<{
 <template>
   <div class="menu-container">
     <h1 class="menu-title">{{ dhall }}</h1>
-    <div class="menu-content">
+    <div>
       <div v-if="Object.keys(dhallMenu).length === 0">
         No menu items :(
       </div>
@@ -64,9 +64,4 @@ ul .dish-list {
 h2 {
   font-size: 0.8em;
 }
-
-.menu-content {
-  margin-top: 0.5em;
-}
-
 </style>
