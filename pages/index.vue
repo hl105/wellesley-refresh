@@ -5,7 +5,7 @@ const { data: menu, error } = await getMenusByDate(now);
 
 const menus = computed(() => menu.value)
 // console.log("menus", menus.value);
-
+// console.log("menus", menus.value ? Object.keys(menus.value) : []);
 const showPopup = ref(false);
 onMounted(() => {
   if (!localStorage.getItem('popupShown')) { // if popup hasn't been shown yet

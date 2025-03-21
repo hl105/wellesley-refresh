@@ -28,14 +28,16 @@ function formatMonth(month) {
     }
 }
 
-function formatDate(date) {
+function formatDate(dateString) {
+    const [year, month, day] = dateString.split('-');
+    const date = new Date(year, month - 1, day);
 	return `${formatDayOfWeek(date.getDay())}, ${formatMonth(date.getMonth())}. ${date.getDate()}`;
 }
 
 const props = defineProps(["date", "color"])
 const today = new Date().toISOString().split('T')[0];
 
-const date = props.date === today ? "Today" : formatDate(new Date(props.date));
+const date = props.date === today ? "Today" : formatDate(props.date);
 </script>
 
 <template>
@@ -49,7 +51,6 @@ a {
     border-radius: 20px;
     cursor: pointer;
     transition-duration: 0.3s;
-    font-family: "DynaPuff", sans-serif;
     display: block;
     font-size: 0.8em;
 }

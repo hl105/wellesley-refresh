@@ -111,7 +111,8 @@ function filterPastMeals(menus: PrettifiedData, now: Date): PrettifiedData {
  */
 export function getMenusByDate(date: Date) {
   const client = useSupabaseClient();
-  const key = `menu-${date}`;
+  const dateStr = date.toISOString().split("T")[0];
+  const key = `menu-${dateStr}`;
   const fiveDaysFromDate = new Date(date);
   fiveDaysFromDate.setDate(date.getDate() + 5);
 
@@ -119,7 +120,7 @@ export function getMenusByDate(date: Date) {
     const { data, error } = await client
       .from("Menu")
       .select("*")
-      .gte("date", date.toISOString().split("T")[0])
+      .gte("date", dateStr)
       .lte("date", fiveDaysFromDate.toISOString().split("T")[0]);
 
     if (error) {
