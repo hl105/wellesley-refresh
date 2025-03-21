@@ -1,29 +1,31 @@
 <script setup lang="ts">
-defineProps({ dhall: String, dhallMenu: Object });
+defineProps<{
+  dhall: string;
+  dhallMenu: Record<string, any>;
+}>();
 </script>
 
 <template>
   <div class="menu-container">
     <h1 class="menu-title">{{ dhall }}</h1>
     <div class="menu-content">
+      <div v-if="Object.keys(dhallMenu).length === 0">
+        No menu items :(
+      </div>
       <div v-for="(dishes, station) in dhallMenu" :key="station">
-    <div v-if="Object.keys(dhallMenu).length === 0">
-      No menu items :(
-    </div>
-    <div v-for="(dishes, station) in dhallMenu" :key="station">
-      <template v-if="station !== 'order'">
-        <h2 class="station-title">{{ station }}</h2>
-        <ul class="dish-list">
-          <li
-            v-for="(details, dishName) in dishes"
-            :key="dishName"
-            class="dish-item"
-          >
-            <p>{{ dishName }}</p>
-          </li>
-        </ul>
-      </template>
-    </div>
+        <template v-if="station !== 'order'">
+          <h2 class="station-title">{{ station }}</h2>
+          <ul class="dish-list">
+            <li
+              v-for="(details, dishName) in dishes"
+              :key="dishName"
+              class="dish-item"
+            >
+              <p>{{ dishName }}</p>
+            </li>
+          </ul>
+        </template>
+      </div>
     </div>
   </div>
 </template>
