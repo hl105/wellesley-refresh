@@ -5,6 +5,9 @@ defineProps({ dhall: String, dhallMenu: Object });
 <template>
   <div class="menu-container">
     <h1 class="menu-title">{{ dhall }}</h1>
+    <div v-if="Object.keys(dhallMenu).length === 0">
+      No menu items :(
+    </div>
     <div v-for="(dishes, station) in dhallMenu" :key="station">
       <template v-if="station !== 'order'">
         <h2 class="station-title">{{ station }}</h2>
