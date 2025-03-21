@@ -5,7 +5,7 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-links">
-        <p>Built with &#x2661; by Johanna Lee, Crystal McArdle-Ventura, and Belle See</p>
+        <p>Built with &#x2661; by Belle, Crystal, and Johanna</p>
       </div>
       <div class="footer-links">
         <a href="mailto:hl105@wellesley.edu">Email for feedback & suggestions!</a>
