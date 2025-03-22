@@ -1,13 +1,15 @@
 <script setup>
-const props = defineProps(["date", "color"])
-const today = new Date().toISOString().split('T')[0];
+const props = defineProps(["date"])
+const today = new Date();
+const tomorrow = new Date(today.getTime() + 86400000); // adds 1 day in ms
 
-const currentHour = new Date().getUTCHours();
-const date = (props.date === today && currentHour > 4) ? "Today" : formatDate(props.date);
+
+const date = new Date(props.date);
+const displayDate = (date.getTime() === today.getTime()) ? "TODAY" : ((date.getTime() === tomorrow.getTime()) ? "TOMORROW" : formatDate(props.date));
 </script>
 
 <template>
-    <a :style="{ color: `${props.color}`, borderColor: `${props.color}`}" :href="`#${props.date}`">{{ date }}</a>
+    <a :style="{ color: `${props.color}`, borderColor: `${props.color}`}" :href="`#${props.date}`">{{ displayDate }}</a>
 </template>
 
 <style scoped>
