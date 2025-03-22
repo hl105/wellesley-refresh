@@ -12,9 +12,9 @@ Wellesley Refresh is **not** more accurate than Wellesley Fresh's official menu.
 
 ## Roadmap
 
-- [x] Open page starting from the current/next meal, rather than always from breakfast.
-- [ ] Add allergen and preference icons next to each dish
-- [ ] Tidy up the layout
-- [x] Show day of week next to date. 
-- [x] Change columns for grid to be 1, 2, or 4 columns (not 3)
-- [x] Deploy the website
+- [ ] add popups for each dish with its description, allergens and preferences, and nutrition
+- [ ] crowdsourced ice cream flavors
+
+## Contribute
+
+Want to contribute? Email us! (our usernames are at the top of this README)
