@@ -10,7 +10,7 @@ const showPopupCaption = ref(false);
             <p>Toggle</p>
             <button class="caption-button" @click="showPopupCaption = true"> Allergens & Preferences</button>
             <p>:</p>
-            <label>
+            <label class="toggle-b">
                 <input type="checkbox" class="appearance-none peer" @change="toggle"/>
                 <span class="w-12 h-7 flex items-center flex-shrink-0 ml-3 mb-5 p-1  bg-[#687350]  rounded-full after:w-5 after:h-5 after:bg-white  after:rounded-full after:shadow-md peer-checked:bg-[#F3A203] duration-300 ease-in-out after:duration-300 peer-checked:after:translate-x-5"></span>
             </label>
@@ -43,5 +43,9 @@ const showPopupCaption = ref(false);
     align-items: center;
     justify-content: center;
     gap: 0.5em;
+}
+
+.toggle-b {
+    cursor: pointer;
 }
 </style>
