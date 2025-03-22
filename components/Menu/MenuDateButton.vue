@@ -1,16 +1,15 @@
 <script setup>
 const props = defineProps(["date"])
-const today = new Date();
-const tomorrow = new Date(today.getTime() + 86400000); // adds 1 day in ms
+const today = new Date().toISOString().split('T')[0];
 
 
-const date = new Date(props.date);
-const displayDate = (date.getTime() === today.getTime()) ? "TODAY" : ((date.getTime() === tomorrow.getTime()) ? "TOMORROW" : formatDate(props.date));
-const backgroundC = (displayDate === "TODAY") ? "#F3A203" : "#687350";
+const currentHour = new Date().getUTCHours();
+const date = (props.date === today && currentHour > 4) ? "TODAY" : formatDate(props.date);
+const backgroundC = (props.date === today && currentHour > 4) ? "#F3A203" : "#687350";
 </script>
 
 <template>
-    <button :style="{ backgroundColor: `${backgroundC}`}">{{ displayDate }}</button>
+    <button :style="{ backgroundColor: `${backgroundC}`}">{{ date }}</button>
 </template>
 
 <style scoped>
