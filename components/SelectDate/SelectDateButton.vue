@@ -2,7 +2,8 @@
 const props = defineProps(["date", "color"])
 const today = new Date().toISOString().split('T')[0];
 
-const date = props.date === today ? "Today" : formatDate(props.date);
+const currentHour = new Date().getUTCHours();
+const date = (props.date === today && currentHour > 4) ? "Today" : formatDate(props.date);
 </script>
 
 <template>
