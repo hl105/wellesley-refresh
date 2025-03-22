@@ -7,7 +7,7 @@ const showPopupCaption = ref(false);
 <template>
     <div class="more-options">
         <div class="text-container">
-            <p>Toggle</p>
+            <h2>Toggle</h2>
             <button class="caption-button" @click="showPopupCaption = true"> Allergens & Preferences</button>
             <p>:</p>
             <label class="toggle-b">
@@ -47,5 +47,9 @@ const showPopupCaption = ref(false);
 
 .toggle-b {
     cursor: pointer;
+}
+
+h2 {
+    color: #687350;
 }
 </style>
