@@ -13,8 +13,8 @@ const sortedMeals = ["breakfast", "lunch", "brunch", "dinner"];
 <template>
   <div v-if="props.meals">
     <div v-for="meal in sortedMeals">
-      <h1 class="title">{{ capitalize(meal) }}</h1>
       <div v-if="props.meals[meal]">
+        <h1 class="title">{{ capitalize(meal) }}</h1>
         <div class="grid grid-cols1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto my-8">
         <div v-for="(items, dhall) in props.meals[meal]" :key="dhall">
             <MenuComponent :dhall="String(dhall)" :dhallMenu="items" />
