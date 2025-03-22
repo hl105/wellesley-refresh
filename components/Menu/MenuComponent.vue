@@ -17,7 +17,7 @@ defineProps<{
       </div>
       <div v-for="(dishes, station) in dhallMenu" :key="station">
         <template v-if="station !== 'order'">
-          <h2 class="station-title">{{ station }}</h2>
+          <h2 class="station-title"><span>{{ station }}</span></h2>
           <ul class="dish-list">
             <div v-for="(details, dishName) in dishes" :key="dishName" class="dish-item">
               <p>{{ dishName }}</p>
@@ -63,8 +63,26 @@ ul .dish-list {
 }
 
 .station-title {
-  margin-top: .2em;
+  margin-bottom: .5em;
   font-size: 1em;
+  /* text-decoration:underline wavy #687350; */
+}
+
+.station-title span {
+  position: relative;
+  display: inline-block;
+}
+
+.station-title span::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0; /* adjust vertically as needed */
+  width: 100%;
+  height: 10px;
+  transform: skew(-12deg) translateX(-50%);
+  background: rgba(117, 168, 96, 0.5);
+  z-index: -1;
 }
 
 h2 {
