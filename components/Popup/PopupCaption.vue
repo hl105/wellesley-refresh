@@ -48,7 +48,7 @@ import { ALLERGENS, PREFERENCES } from '@/constants'
 .popup-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     gap: 0.8em;
     background-color: #fff2e2;
@@ -100,7 +100,7 @@ import { ALLERGENS, PREFERENCES } from '@/constants'
 }
 
 p {
-    font-size: 0.3em;
+    font-size: 11px;
 }
 
 img {
