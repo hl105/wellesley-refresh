@@ -1,6 +1,4 @@
 <script setup>
-import { ref } from 'vue'
-
 const props = defineProps(["dates"])
 const emit = defineEmits(['dateSelected'])
 

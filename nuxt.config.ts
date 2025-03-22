@@ -31,6 +31,7 @@ export default defineNuxtConfig({
     "@nuxtjs/supabase",
     "@nuxtjs/google-fonts",
   ],
+
   runtimeConfig: {
     public: {
       supabaseUrl: process.env.NUXT_SUPABASE_URL,
