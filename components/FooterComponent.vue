@@ -8,7 +8,7 @@
         <p>Built with &#x2661; by Belle See, Crystal McArdle-Ventura, and Johanna Lee</p>
       </div>
       <div class="footer-links">
-        <a href="mailto:hl105@wellesley.edu">Email for feedback & suggestions!</a>
+        <a href="https://forms.gle/7vEa8iQ8oQv4L43e8">Feedback & suggestions survey!</a>
         <span class="separator">|</span>
         <a href="https://github.com/hl105/wellesley-refresh" target="_blank">Open Source at GitHub! If you like this, give us a star! 🌟</a>
       </div>
