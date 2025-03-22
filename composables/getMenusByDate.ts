@@ -43,7 +43,7 @@ function prettifyData(data: Tables<"Menu">[]) {
     let meals = prettified[date];
 
     const dayOfWeek = new Date(date).getDay();
-    const meal = (dayOfWeek === 0 || dayOfWeek === 6) ? "brunch" : dish["meal"];
+    const meal = (dish["meal"] !== "dinner" && (dayOfWeek === 0 || dayOfWeek === 6)) ? "brunch" : dish["meal"];
     if (!(meal in meals)) {
       meals[meal] = {};
     }
