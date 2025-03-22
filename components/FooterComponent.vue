@@ -10,7 +10,7 @@
       <div class="footer-links">
         <a href="mailto:hl105@wellesley.edu">Email for feedback & suggestions!</a>
         <span class="separator">|</span>
-        <a href="https://github.com/hl105/wellesley-refresh" target="_blank">Open Source at GitHub</a>
+        <a href="https://github.com/hl105/wellesley-refresh" target="_blank">Open Source at GitHub! If you like this, give us a star! 🌟</a>
       </div>
     </div>
   </footer>
