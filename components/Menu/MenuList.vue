@@ -7,7 +7,7 @@ function capitalize(word: string) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
-const sortedMeals = ["breakfast", "lunch", "dinner"];
+const sortedMeals = ["breakfast", "lunch", "brunch", "dinner"];
 </script>
 
 <template>
@@ -21,7 +21,6 @@ const sortedMeals = ["breakfast", "lunch", "dinner"];
           </div>
         </div>
       </div>
-      <div v-else>No menus found for all dining halls</div>
   </div>
   </div>
 </template>
