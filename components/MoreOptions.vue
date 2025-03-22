@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useToggle } from '@/composables/useToggle';
+import { toggled, useToggle } from '@/composables/useToggle';
 const { toggle } = useToggle();
 const showPopupCaption = ref(false);
 </script>
@@ -7,7 +7,8 @@ const showPopupCaption = ref(false);
 <template>
     <div class="more-options">
         <div class="text-container">
-            <h2>Toggle</h2>
+            <h2 v-if="toggled">Hide</h2>
+            <h2 v-else>Show</h2>
             <button class="caption-button" @click="showPopupCaption = true"> Allergens & Preferences</button>
             <p>:</p>
             <label class="toggle-b">
