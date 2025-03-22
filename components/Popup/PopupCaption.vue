@@ -10,8 +10,8 @@ import { ALLERGENS, PREFERENCES } from '@/constants'
         <div class="popup-content">
             <button class="close-button" @click="emit('close')">X</button>
             <h2 class="captions-text">Allergens and Preferences</h2>
-            <div class="caption-container">
-                <div class="caption-item">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-2 ">
+                <div class="caption-item ">
                     <h3>Allergens</h3>
                     <div class="allergen-container">
                         <div class="allergen-item" v-for="allergen in ALLERGENS" :key="allergen.id">
@@ -57,10 +57,10 @@ import { ALLERGENS, PREFERENCES } from '@/constants'
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 1em;
-    padding: 2em;
+    padding: 1em;
     border-width: 3px;
     border-color: black;
-    min-width: 25em;
+    padding-top: 2em;
 }
 
 .close-button {
@@ -69,7 +69,7 @@ import { ALLERGENS, PREFERENCES } from '@/constants'
     padding: 2px;
     padding-left: 10px;
     padding-right: 10px;
-    position: absolute; top: 10px; right: 10px;
+    position: absolute; top: 8px; right: 8px;
 }
 
 .close-button:hover {
@@ -90,14 +90,6 @@ import { ALLERGENS, PREFERENCES } from '@/constants'
     align-items: center;
     justify-content: left;
     gap: 1em;
-}
-
-.caption-container {
-    display: flex;
-    flex-direction: row;
-    align-items: top;
-    justify-content: center;
-    gap: 3em;
 }
 
 .caption-item {
