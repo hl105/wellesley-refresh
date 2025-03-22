@@ -30,6 +30,7 @@ const selectDate = (date) => {
     gap: 10px;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .hero-section {
