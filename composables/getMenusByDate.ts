@@ -37,16 +37,20 @@ function prettifyData(data: Tables<"Menu">[]) {
   // console.log("inside function top");
   data.forEach((dish) => {
     const date = dish["date"];
+    const dayOfWeek = new Date(date).getDay();
     if (!(date in prettified)) {
       prettified[date] = {};
+      prettified[date]['dinner'] = {};
+      if (dayOfWeek === 0 || dayOfWeek === 6) {
+        prettified[date]['brunch'] = {};
+      } else {
+        prettified[date]['breakfast'] = {};
+        prettified[date]['lunch'] = {};
+      }
     }
     let meals = prettified[date];
 
-    const dayOfWeek = new Date(date).getDay();
     const meal = (dish["meal"] !== "dinner" && (dayOfWeek === 0 || dayOfWeek === 6)) ? "brunch" : dish["meal"];
-    if (!(meal in meals)) {
-      meals[meal] = {};
-    }
     let food = meals[meal];
 
     const dhall = dish["dhall"];
