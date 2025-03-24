@@ -83,29 +83,25 @@ function prettifyData(data: Tables<"Menu">[]) {
 /**
  * Filter out past meals based on the current time
  * @param meals Prettified data to filter
- * @param now Current date and time
+ * @param now Current date and time in EST
  * @returns Filtered prettified data
  */
-function filterPastMeals(menus: PrettifiedData, now: Date): PrettifiedData {
+function filterPastMeals(menus: PrettifiedData): PrettifiedData {
   const filteredData: PrettifiedData = { ...menus }; // shallow copy bc we only modify the current date
 
-  const todayStr = now.toISOString().split("T")[0];
-
-  if (filteredData[todayStr]) {
-    const todayMeals = { ...filteredData[todayStr] }; // grab meals object for today
-    const currentHour = now.getHours();
-    // console.log("currentHour", currentHour);
-
-    if (currentHour > 23) {
-      delete filteredData[todayStr]; // drop entire day (breakfast, lunch, dinner) because it's past 7pm EST (23 UTC)
-    } else if (currentHour > 18) {
+  if (filteredData[today]) {
+    const todayMeals = { ...filteredData[today] }; // grab meals object for today
+    if (currentHour > 22) {
+      delete filteredData[today]; // drop entire day (breakfast, lunch, dinner) because it's past 10pm EST 
+    } else if (currentHour > 14) {
+      console.log("dropping breakfast, lunch, brunch for", today);
       // drop breakfast, lunch if past 2pm EST
       delete todayMeals["breakfast"];
       delete todayMeals["lunch"];
-      filteredData[todayStr] = todayMeals;
+      delete todayMeals["brunch"];
+      filteredData[today] = todayMeals;
     }
   }
-
   return filteredData;
 }
 
@@ -114,24 +110,25 @@ function filterPastMeals(menus: PrettifiedData, now: Date): PrettifiedData {
  * @param date Date to query five day's worth of menus from
  * @returns formatted menus with past meals filtered out
  */
-export function getMenusByDate(date: Date) {
+export function getMenusByDate(date: Moment) {
+  // console.log("in getMenusByDate", date);
   const client = useSupabaseClient();
-  const dateStr = date.toISOString().split("T")[0];
+  const dateStr = date.format("YYYY-MM-DD");
   const key = `menu-${dateStr}`;
-  const fiveDaysFromDate = new Date(date);
-  fiveDaysFromDate.setDate(date.getDate() + 5);
+  const fiveDaysFromDate = date.clone().add(5, "days");
 
   return useAsyncData(key, async () => {
     const { data, error } = await client
       .from("Menu")
       .select("*")
       .gte("date", dateStr)
-      .lte("date", fiveDaysFromDate.toISOString().split("T")[0]);
+      .lte("date", fiveDaysFromDate.format("YYYY-MM-DD"));
 
     if (error) {
       console.log("Error while fetching dining hall menu", error);
     }
     const menus = prettifyData(data as Tables<"Menu">[]);
-    return filterPastMeals(menus, date);
+    // console.log("in function", menus);
+    return filterPastMeals(menus);
   });
 }
