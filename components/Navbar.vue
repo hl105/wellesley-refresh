@@ -109,7 +109,7 @@ const toggleNavbar = () => {
 
 .close-button p {
   font-size: 1.2em;
-  font-family: 'DynaPuff'
+  font-family: 'DynaPuff';
 }
 
 h2 {
@@ -121,5 +121,6 @@ h2 {
     flex-direction: column;
     gap: 10px;
     justify-content: center;
+    font-family: 'DynaPuff';
 }
 </style>
