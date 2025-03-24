@@ -41,7 +41,7 @@ function prettifyData(data: Tables<"Menu">[]) {
     if (!(date in prettified)) {
       prettified[date] = {};
       prettified[date]['dinner'] = {};
-      if (dayOfWeek === 0 || dayOfWeek === 6) {
+      if (dayOfWeek === 5 || dayOfWeek === 6) {
         prettified[date]['brunch'] = {};
       } else {
         prettified[date]['breakfast'] = {};
@@ -50,7 +50,7 @@ function prettifyData(data: Tables<"Menu">[]) {
     }
     let meals = prettified[date];
 
-    const meal = (dish["meal"] !== "dinner" && (dayOfWeek === 0 || dayOfWeek === 6)) ? "brunch" : dish["meal"];
+    const meal = (dish["meal"] !== "dinner" && (dayOfWeek === 5 || dayOfWeek === 6)) ? "brunch" : dish["meal"];
     let food = meals[meal];
 
     const dhall = dish["dhall"];
@@ -88,19 +88,40 @@ function prettifyData(data: Tables<"Menu">[]) {
  */
 function filterPastMeals(menus: PrettifiedData): PrettifiedData {
   const filteredData: PrettifiedData = { ...menus }; // shallow copy bc we only modify the current date
-
+  const date: Date = new Date(today)
   if (filteredData[today]) {
     const todayMeals = { ...filteredData[today] }; // grab meals object for today
+    const isWeekend = (date.getDay() === 5 || date.getDay() === 6); 
+
     if (currentHour > 22) {
       delete filteredData[today]; // drop entire day (breakfast, lunch, dinner) because it's past 10pm EST 
-    } else if (currentHour > 14) {
-      console.log("dropping breakfast, lunch, brunch for", today);
-      // drop breakfast, lunch if past 2pm EST
-      delete todayMeals["breakfast"];
-      delete todayMeals["lunch"];
-      delete todayMeals["brunch"];
-      filteredData[today] = todayMeals;
-    }
+    } else {
+      if (isWeekend) {
+        if (currentHour > 14) {
+          // console.log("dropping breakfast, lunch, brunch for", today);
+          // drop breakfast, lunch if past 2pm EST
+          delete todayMeals["breakfast"];
+          delete todayMeals["lunch"];
+          delete todayMeals["brunch"];
+          filteredData[today] = todayMeals;
+        }
+      } else {
+        if (currentHour >= 11 && currentHour < 14) {
+          // console.log("dropping breakfast for", today);
+          // drop breakfast if past 11am EST
+          delete todayMeals["breakfast"];
+          delete todayMeals["brunch"];
+          filteredData[today] = todayMeals;
+        } else if (currentHour >= 14) {
+          // console.log("dropping breakfast and lunch if after 2 for", today)
+          delete todayMeals["breakfast"];
+          delete todayMeals["lunch"];
+          delete todayMeals["brunch"];
+          filteredData[today] = todayMeals;
+        }
+      }
+
+    } 
   }
   return filteredData;
 }

@@ -77,6 +77,7 @@ const toggleNavbar = () => {
 .hamburger p {
   font-size: 1.5rem;
   position: relative;
+  margin-top: -5px;
 }
 
 .Navbar {
