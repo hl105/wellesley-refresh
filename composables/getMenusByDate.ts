@@ -37,7 +37,7 @@ function prettifyData(data: Tables<"Menu">[]) {
   // console.log("inside function top");
   data.forEach((dish) => {
     const date = dish["date"];
-    const dayOfWeek = new Date(date).getDay();
+    const dayOfWeek = new Date(date).getUTCDay();
     if (!(date in prettified)) {
       prettified[date] = {};
       prettified[date]['dinner'] = {};
@@ -91,7 +91,7 @@ function filterPastMeals(menus: PrettifiedData): PrettifiedData {
   const date: Date = new Date(today)
   if (filteredData[today]) {
     const todayMeals = { ...filteredData[today] }; // grab meals object for today
-    const isWeekend = (date.getDay() === 0 || date.getDay() === 6); 
+    const isWeekend = (date.getUTCDay() === 0 || date.getUTCDay() === 6); 
 
     if (currentHour > 22) {
       delete filteredData[today]; // drop entire day (breakfast, lunch, dinner) because it's past 10pm EST 
