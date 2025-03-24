@@ -131,6 +131,7 @@ h2 {
 }
 
 .tooltip .tooltiptext {
+  font-size: .8em;
   visibility: hidden;
   width: 120px;
   background-color: black;
@@ -139,8 +140,7 @@ h2 {
   border-radius: 6px;
   padding: 5px 0;
   position: absolute;
-  z-index: 1;
-  top: 110%;
+  top: 150%;
   left: 50%;
   margin-left: -60px;
   font-family: 'DynaPuff';
