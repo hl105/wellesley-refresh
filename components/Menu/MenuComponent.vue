@@ -144,6 +144,7 @@ h2 {
   left: 50%;
   margin-left: -60px;
   font-family: 'DynaPuff';
+  z-index: 1;
 }
 
 .tooltip .tooltiptext::after {
