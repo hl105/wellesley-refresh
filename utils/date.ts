@@ -5,9 +5,9 @@ export const now = moment.tz(new Date(), "America/New_York");
 export const today = now.format("YYYY-MM-DD");
 export const currentHour = now.hour();
 
-console.log("NOW", now);
-console.log("TODAY", today);
-console.log("CURRENT HOUR", currentHour);
+// console.log("NOW", now);
+// console.log("TODAY", today);
+// console.log("CURRENT HOUR", currentHour);
 
 export function formatDayOfWeek(dayOfWeek: number) {
   switch (dayOfWeek) {
