@@ -100,6 +100,9 @@ function filterPastMeals(menus: PrettifiedData): PrettifiedData {
       delete todayMeals["lunch"];
       delete todayMeals["brunch"];
       filteredData[today] = todayMeals;
+    } else if (currentDayOfWeek !== 0 && currentDayOfWeek !== 6 && currentHour > 10) {
+      console.log("dropping breakfast for", today);
+      delete todayMeals["breakfast"];
     }
   }
   return filteredData;
