@@ -36,6 +36,7 @@ const showPopupCaption = ref(false);
     cursor: pointer;
     transition-duration: 0.3s;
     display: block;
+    font-family: 'DynaPuff';
 }
 
 .text-container {
