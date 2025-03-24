@@ -118,14 +118,14 @@ export function getMenusByDate(date: Moment) {
   const client = useSupabaseClient();
   const dateStr = date.format("YYYY-MM-DD");
   const key = `menu-${dateStr}`;
-  const endDate = date.clone().add(7, "days");
+  const fiveDaysFromDate = date.clone().add(5, "days");
 
   return useAsyncData(key, async () => {
     const { data, error } = await client
       .from("Menu")
       .select("*")
       .gte("date", dateStr)
-      .lte("date", endDate.format("YYYY-MM-DD"));
+      .lte("date", fiveDaysFromDate.format("YYYY-MM-DD"));
 
     if (error) {
       console.log("Error while fetching dining hall menu", error);
