@@ -61,6 +61,7 @@ const toggleNavbar = () => {
   left: 1rem;
   width: 2rem;
   height: 2rem;
+  padding-top: 5px;
   padding-bottom: 4px;
   cursor: pointer;
   z-index: 100;
