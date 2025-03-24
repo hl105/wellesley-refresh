@@ -99,7 +99,6 @@ function filterPastMeals(menus: PrettifiedData): PrettifiedData {
       if (isWeekend) {
         if (currentHour > 14) {
           // console.log("dropping breakfast, lunch, brunch for", today);
-          // drop breakfast, lunch if past 2pm EST
           delete todayMeals["breakfast"];
           delete todayMeals["lunch"];
           delete todayMeals["brunch"];
@@ -108,7 +107,6 @@ function filterPastMeals(menus: PrettifiedData): PrettifiedData {
       } else {
         if (currentHour >= 11 && currentHour < 14) {
           // console.log("dropping breakfast for", today);
-          // drop breakfast if past 11am EST
           delete todayMeals["breakfast"];
           delete todayMeals["brunch"];
           filteredData[today] = todayMeals;
