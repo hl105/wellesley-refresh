@@ -4,7 +4,6 @@ import moment from "moment-timezone";
 export const now = moment.tz(new Date(), "America/New_York");
 export const today = now.format("YYYY-MM-DD");
 export const currentHour = now.hour();
-export const currentDayOfWeek = now.weekday();
 
 // console.log("NOW", now);
 // console.log("TODAY", today);
