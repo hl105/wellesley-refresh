@@ -24,11 +24,11 @@ defineProps<{
                 <p>{{ dishName }}</p>
                 <div v-if="toggled" class="more-options">
                   <div class="tooltip" v-for="preference in details.preferences">
-                    <img key="{{ preference.id }}" src="{{ preference.img }}" alt="{{ preference.name }}" class="icon" />
+                    <img :key="preference.id" :src="preference.img" :alt="preference.name" class="icon" />
                     <span class="tooltiptext">{{ preference.name }}</span>
                   </div>
                   <div class="tooltip" v-for="allergen in details.allergens">
-                    <img key="{{ allergen.id }}" src="{{ allergen.img }}" alt="{{ allergen.name }}" class="icon" />
+                    <img :key="allergen.id" :src="allergen.img" :alt="allergen.name" class="icon" />
                     <span class="tooltiptext">{{ allergen.name }}</span>
                   </div>
                 </div>
