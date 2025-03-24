@@ -41,7 +41,7 @@ function prettifyData(data: Tables<"Menu">[]) {
     if (!(date in prettified)) {
       prettified[date] = {};
       prettified[date]['dinner'] = {};
-      if (dayOfWeek === 5 || dayOfWeek === 6) {
+      if (dayOfWeek === 0 || dayOfWeek === 6) {
         prettified[date]['brunch'] = {};
       } else {
         prettified[date]['breakfast'] = {};
@@ -50,7 +50,7 @@ function prettifyData(data: Tables<"Menu">[]) {
     }
     let meals = prettified[date];
 
-    const meal = (dish["meal"] !== "dinner" && (dayOfWeek === 5 || dayOfWeek === 6)) ? "brunch" : dish["meal"];
+    const meal = (dish["meal"] !== "dinner" && (dayOfWeek === 0 || dayOfWeek === 6)) ? "brunch" : dish["meal"];
     let food = meals[meal];
 
     const dhall = dish["dhall"];
@@ -91,7 +91,7 @@ function filterPastMeals(menus: PrettifiedData): PrettifiedData {
   const date: Date = new Date(today)
   if (filteredData[today]) {
     const todayMeals = { ...filteredData[today] }; // grab meals object for today
-    const isWeekend = (date.getDay() === 5 || date.getDay() === 6); 
+    const isWeekend = (date.getDay() === 0 || date.getDay() === 6); 
 
     if (currentHour > 22) {
       delete filteredData[today]; // drop entire day (breakfast, lunch, dinner) because it's past 10pm EST 
