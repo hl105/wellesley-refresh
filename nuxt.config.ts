@@ -2,26 +2,30 @@
 require("dotenv").config();
 import tailwindcss from "@tailwindcss/vite";
 
-
-
 export default defineNuxtConfig({
   app: {
     head: {
       title: "Wellesley Refresh",
       meta: [
-        { name: "description", content: "Refreshing the Wellesley AVI Fresh Website" },
+        {
+          name: "description",
+          content: "Refreshing the Wellesley AVI Fresh Website",
+        },
       ],
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+        {
+          rel: "apple-touch-icon",
+          type: "image/svg+xml",
+          href: "/favicon.svg",
+        },
       ],
     },
   },
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
   vite: {
-    plugins: [
-      tailwindcss(),
-    ],
+    plugins: [tailwindcss()],
   },
 
   modules: [
