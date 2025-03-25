@@ -134,7 +134,7 @@ export function getMenusByDate(date: Moment) {
   const client = useSupabaseClient();
   const dateStr = date.format("YYYY-MM-DD");
   const key = `menu-${dateStr}`;
-  const endDate = date.clone().add(7, "days");
+  const endDate = date.clone().add(5, "days");
 
   return useAsyncData(key, async () => {
     const { data, error } = await client
