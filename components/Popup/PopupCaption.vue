@@ -64,6 +64,7 @@ import { ALLERGENS, PREFERENCES } from '@/constants'
 }
 
 .close-button {
+    font-family: 'DynaPuff';
     background-color: #fff2e2;
     border-radius: 1em;
     padding: 2px;
