@@ -37,7 +37,7 @@ function prettifyData(data: Tables<"Menu">[]) {
   // console.log("inside function top");
   data.forEach((dish) => {
     const date = dish["date"];
-    const dayOfWeek = new Date(date).getDay();
+    const dayOfWeek = new Date(date).getUTCDay();
     if (!(date in prettified)) {
       prettified[date] = {};
       prettified[date]['dinner'] = {};
@@ -88,19 +88,38 @@ function prettifyData(data: Tables<"Menu">[]) {
  */
 function filterPastMeals(menus: PrettifiedData): PrettifiedData {
   const filteredData: PrettifiedData = { ...menus }; // shallow copy bc we only modify the current date
-
+  const date: Date = new Date(today)
   if (filteredData[today]) {
     const todayMeals = { ...filteredData[today] }; // grab meals object for today
-    if (currentHour > 22) {
+    const isWeekend = (date.getUTCDay() === 0 || date.getUTCDay() === 6); 
+
+    if (currentHour >= 22) {
       delete filteredData[today]; // drop entire day (breakfast, lunch, dinner) because it's past 10pm EST 
-    } else if (currentHour > 14) {
-      console.log("dropping breakfast, lunch, brunch for", today);
-      // drop breakfast, lunch if past 2pm EST
-      delete todayMeals["breakfast"];
-      delete todayMeals["lunch"];
-      delete todayMeals["brunch"];
-      filteredData[today] = todayMeals;
-    }
+    } else {
+      if (isWeekend) {
+        if (currentHour >= 14) {
+          // console.log("dropping breakfast, lunch, brunch for", today);
+          delete todayMeals["breakfast"];
+          delete todayMeals["lunch"];
+          delete todayMeals["brunch"];
+          filteredData[today] = todayMeals;
+        }
+      } else { // weekday
+        if (currentHour >= 10 && currentHour < 14) {
+          // console.log("dropping breakfast for", today);
+          delete todayMeals["breakfast"];
+          delete todayMeals["brunch"];
+          filteredData[today] = todayMeals;
+        } else if (currentHour >= 14) {
+          // console.log("dropping breakfast and lunch if after 2 for", today)
+          delete todayMeals["breakfast"];
+          delete todayMeals["lunch"];
+          delete todayMeals["brunch"];
+          filteredData[today] = todayMeals;
+        }
+      }
+
+    } 
   }
   return filteredData;
 }
