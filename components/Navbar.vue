@@ -57,8 +57,8 @@ const toggleNavbar = () => {
 <style scoped>
 .hamburger {
   position: fixed;
-  top: 2rem;
-  left: 1rem;
+  bottom: 1rem;
+  right: 1.5rem;
   width: 2rem;
   height: 2rem;
   padding-bottom: 4px;
