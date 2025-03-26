@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps(["date", "color"])
 // console.log(props.date, today, (props.date === today))
-const date = (props.date === today) ? "Today" : ((props.date === tomorrow) ? "Tomorrow" : formatDate(props.date));
+const date = (props.date === today) ? "Today" : formatDate(props.date);
 </script>
 
 <template>
