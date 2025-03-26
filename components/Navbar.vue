@@ -82,7 +82,7 @@ const toggleNavbar = () => {
 .Navbar {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: 250px;
   height: 100vh;
   background: #687350;
