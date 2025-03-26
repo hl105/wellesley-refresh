@@ -10,9 +10,16 @@ If you found this project helpful, please consider giving us a star! 🌟
 
 Wellesley Refresh is **not** more accurate than Wellesley Fresh's official menu. Wellesley Refresh relies on the data that Wellesley Fresh provides, so if Wellesley Fresh says Lulu is serving burgers, so will Wellesley Refresh, even if Lulu actually has fried rice. Another known example is dinner menus showing on the lunch menu -- it's because it's how it's shown on the Wellesley Fresh site! Crowdsourcing menus is a possible solution, and may be implemented in the future, but this poses much bigger technical challenges. For now, Wellesley Refresh is only a UI refresh on the dining hall menus.
 
-## Roadmap
+## Feature Roadmap
 
+- [ ] optimize the mobile experience
+  - [x] move hamburger to bottom right for easier access
+    - [ ] add toggle for left-handed ppl
+  - [ ] add more navigation buttons to get to each meal and perhaps dining hall
+- [ ] add filters for dining halls
+- [ ] add ability to filter out allergens and filter for preferences
 - [ ] add popups for each dish with its description, allergens and preferences, and nutrition
+  - [ ] add notification system to let you know when your favorite dish is coming up
 - [ ] crowdsourced ice cream flavors
 
 ## Contribute
