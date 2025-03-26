@@ -3,6 +3,7 @@ import moment from "moment-timezone";
 // const date = new Date(Date.UTC(2025, 2, 23, 2, 0, 0)); // Test with diff UTC dates month is 0-indexed
 export const now = moment.tz(new Date(), "America/New_York");
 export const today = now.format("YYYY-MM-DD");
+export const tomorrow = today.clone().add(5, "days");
 export const currentHour = now.hour();
 
 // console.log("NOW", now);
