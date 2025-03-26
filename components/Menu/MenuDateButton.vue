@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps(["date"])
 
-const date = (props.date === today) ? "TODAY" : formatDate(props.date);
+const date = (props.date === today) ? "TODAY" : ((props.date === tomorrow) ? "TOMORROW" : formatDate(props.date));
 const backgroundC = (props.date === today) ? "#F3A203" : "#687350";
 </script>
 
