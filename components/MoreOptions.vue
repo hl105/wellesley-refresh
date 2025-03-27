@@ -37,6 +37,7 @@ const showPopupCaption = ref(false);
     transition-duration: 0.3s;
     display: block;
     font-family: 'DynaPuff';
+    margin: 0 -7px 0 -3px;
 }
 
 .text-container {

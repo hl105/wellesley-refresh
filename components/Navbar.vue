@@ -57,10 +57,10 @@ const toggleNavbar = () => {
 <style scoped>
 .hamburger {
   position: fixed;
-  top: 2rem;
-  left: 1rem;
-  width: 2rem;
-  height: 2rem;
+  bottom: 1rem;
+  right: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   padding-bottom: 4px;
   cursor: pointer;
   z-index: 100;
@@ -82,7 +82,7 @@ const toggleNavbar = () => {
 .Navbar {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: 250px;
   height: 100vh;
   background: #687350;
