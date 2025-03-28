@@ -1,10 +1,11 @@
 import moment from "moment-timezone";
 
 // const date = new Date(Date.UTC(2025, 2, 23, 2, 0, 0)); // Test with diff UTC dates month is 0-indexed
-export const now = moment.tz(new Date(), "America/New_York");
-export const today = now.format("YYYY-MM-DD");
-export const tomorrow = now.clone().add(1, 'days').format("YYYY-MM-DD");
-export const currentHour = now.hour();
+export const getNow = () => moment.tz(new Date(), "America/New_York");
+export const getToday = () => getNow().format("YYYY-MM-DD");
+export const getTomorrow = () =>
+  getNow().clone().add(1, "days").format("YYYY-MM-DD");
+export const getCurrentHour = () => getNow().hour();
 
 // console.log("NOW", now);
 // console.log("TODAY", today);

@@ -88,6 +88,8 @@ function prettifyData(data: Tables<"Menu">[]) {
  */
 function filterPastMeals(menus: PrettifiedData): PrettifiedData {
   const filteredData: PrettifiedData = { ...menus }; // shallow copy bc we only modify the current date
+  const today = getToday()
+  const currentHour = getCurrentHour()
   const date: Date = new Date(today)
   if (filteredData[today]) {
     const todayMeals = { ...filteredData[today] }; // grab meals object for today
