@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import NavbarEl from '~/components/Navbar/NavbarEl.vue';
+import SelectDateButtonList from '~/components/SelectDate/SelectDateButtonList.vue';
+
 const { data: menu, error } = await getMenusByDate(getNow());
 
 const menus = computed(() => menu.value)
@@ -19,7 +22,7 @@ onMounted(() => {
     <img src="~/assets/images/logo.png" alt="Wellesley Refresh Logo" class="logo">
   </NuxtLink>
   <div v-if="menus">
-    <Navbar class="block md:hidden" :dates="Object.keys(menus).sort()" />
+    <NavbarEl class="block md:hidden" :menus="menus" />
     <SelectDateButtonList :dates="Object.keys(menus).sort()" />
     <MoreOptions />
     <div class="main-elements">
