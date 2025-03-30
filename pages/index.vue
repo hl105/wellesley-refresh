@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data: menu, error } = await getMenusByDate(now);
+const { data: menu, error } = await getMenusByDate(getNow());
 
 const menus = computed(() => menu.value)
 // console.log("menus", menus.value);

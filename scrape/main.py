@@ -280,7 +280,7 @@ def push_data(dhall: int, meal: int, wfapi_menu: dict):
     dhall = DiningHall(dhall)
     meal = Meal(meal)
 
-    url = "http://localhost:3000/api/push"
+    url = "https://wellesley-refresh.vercel.app/api/push"
     for dish in wfapi_menu:
         payload = {
             "supabaseUrl": os.environ.get("NUXT_SUPABASE_URL"),
@@ -296,22 +296,25 @@ def push_data(dhall: int, meal: int, wfapi_menu: dict):
 
         # add booleans for which allergens & preferences apply
         for allergen in dish["allergens"]:
-            payload[ALLERGEN_FIELDS[allergen["id"]]] = True
+            try:
+                payload[ALLERGEN_FIELDS[allergen["id"]]] = True
+            except:
+                print(f"\n\nno allergen id, {allergen['id']}\n\n")
         for preference in dish["preferences"]:
             payload[PREFERENCE_FIELDS[preference["id"]]] = True
 
-        response = requests.post(url, json=payload)
+        response = requests.post(url, json=payload, verify=False)
         print(response.json())
 
 
 def delete_data():
-    url = "http://localhost:3000/api/delete"
+    url = "https://wellesley-refresh.vercel.app/api/delete"
     payload = {
         "supabaseUrl": os.environ.get("NUXT_SUPABASE_URL"),
         "supabaseKey": os.environ.get("NUXT_SUPABASE_KEY"),
     }
 
-    response = requests.post(url, json=payload)
+    response = requests.post(url, json=payload, verify=False)
     print(response.json())
 
 
