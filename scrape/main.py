@@ -63,6 +63,11 @@ ALLERGENS = {
         "name": "May Contain Egg",
         "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1662992206/Filter/0c5bc4da-eabf-474d-9bf7-8c9f0791c7d6Eggs.png",
     },
+    "may_contain_fish": {
+        "id": 97,
+        "name": "May Contain Fish",
+        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1732114141/Filter/7874f89d-3ddd-4022-ac42-2ceeb462aa13Fish.png",
+    },
     "may_contain_peanut": {
         "id": 94,
         "name": "May Contain Peanut",
@@ -88,6 +93,7 @@ ALLERGENS = {
         "name": "May Contain Wheat",
         "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1662992288/Filter/a0c44739-1e63-4229-aa4f-fed757a64b98Wheat.png",
     },
+    "may_contain_shellfish": {},
 }
 PREFERENCES = {
     "is_gluten_sensitive": {
@@ -252,7 +258,7 @@ def get_menu(locationId: int, mealId: int, date: date = date.today()):
             "locationId": locationId,
             "mealId": mealId,
         },
-        verify=False
+        verify=False,
     )
 
     if response.ok:

@@ -56,6 +56,11 @@ export const ALLERGENS: Record<AllergenKey,  Allergen> = {
     name: "May Contain Egg",
     img: "https://res.cloudinary.com/avi-foodsystems/image/upload/v1662992206/Filter/0c5bc4da-eabf-474d-9bf7-8c9f0791c7d6Eggs.png",
   },
+  may_contain_fish: {
+    id: 97,
+    name: "May Contain Fish",
+    img: "https://res.cloudinary.com/avi-foodsystems/image/upload/v1732114141/Filter/7874f89d-3ddd-4022-ac42-2ceeb462aa13Fish.png"
+  },
   may_contain_peanut: {
     id: 94,
     name: "May Contain Peanut",
@@ -81,6 +86,9 @@ export const ALLERGENS: Record<AllergenKey,  Allergen> = {
     name: "May Contain Wheat",
     img: "https://res.cloudinary.com/avi-foodsystems/image/upload/v1662992288/Filter/a0c44739-1e63-4229-aa4f-fed757a64b98Wheat.png",
   },
+  may_contain_shellfish: {
+
+  }
 };
 
 export const PREFERENCES: Record<PreferenceKey, Preference> = {
@@ -117,11 +125,13 @@ export const ALLERGEN_FIELDS: AllergenKey[] = [
   "has_shellfish",
   "may_contain_dairy",
   "may_contain_egg",
+  "may_contain_fish",
   "may_contain_peanut",
   "may_contain_sesame",
   "may_contain_soy",
   "may_contain_tree_nut",
   "may_contain_wheat",
+  "may_contain_shellfish",
 ];
 export const PREFERENCE_FIELDS: PreferenceKey[] = [
   "is_vegetarian",
