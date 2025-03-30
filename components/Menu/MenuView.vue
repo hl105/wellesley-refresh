@@ -19,7 +19,7 @@ const sortedDates = computed(() => { // sort dates by time
     <br />
     <br />
     <MenuDateButton :date="date" />
-    <MenuList :meals="menus[date]" />
+    <MenuList :meals="menus[date]" :date="date" />
   </div>
 </template>
 
