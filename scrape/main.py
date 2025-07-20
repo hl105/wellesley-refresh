@@ -1,3 +1,4 @@
+import json
 import os
 from datetime import date, timedelta
 from enum import IntEnum, StrEnum
@@ -5,142 +6,17 @@ from enum import IntEnum, StrEnum
 import requests
 from dotenv import load_dotenv
 
-load_dotenv("../.env")
+load_dotenv(".env")
 
-ALLERGENS = {
-    "has_dairy": {
-        "id": 8,
-        "name": "Dairy",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1616704537/Filter/d8db7f73-11b6-42d0-bb54-84421df28ccdMilk.png",
-    },
-    "has_egg": {
-        "id": 9,
-        "name": "Egg",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1616704545/Filter/804d1cea-2ea6-4402-86ad-94de8ee3b794Eggs.png",
-    },
-    "has_fish": {
-        "id": 55,
-        "name": "Fish",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1572036202/Filter/9c81d044-bb17-43f4-bae8-12f695370291Fish.png",
-    },
-    "has_peanut": {
-        "id": 7,
-        "name": "Peanut",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1616704556/Filter/ad113f9c-4e43-44f3-8457-b75cec40fb91Peanuts.png",
-    },
-    "has_sesame": {
-        "id": 56,
-        "name": "Sesame",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1660659591/Filter/1c8163a0-d2a0-483d-a5bd-ba1e8505de0eSesame.png",
-    },
-    "has_soy": {
-        "id": 6,
-        "name": "Soy",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1572036355/Filter/940249d6-35b4-45a4-b636-2c2e7eec794cSoy.png",
-    },
-    "has_tree_nut": {
-        "id": 5,
-        "name": "Tree Nut",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1572036400/Filter/7a1abc99-77a2-4e35-bea8-ae6e92deae29TreeNut.png",
-    },
-    "has_wheat": {
-        "id": 4,
-        "name": "Wheat",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1616704567/Filter/1da8b875-817f-44e3-bf19-1ba1782d5162Wheat.png",
-    },
-    "has_shellfish": {
-        "id": 3,
-        "name": "Shellfish",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1572036362/Filter/9022fb0c-eb15-43f5-b636-9735b184f3e4Shellfish.png",
-    },
-    "may_contain_dairy": {
-        "id": 87,
-        "name": "May Contain Dairy",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1662992189/Filter/8125355b-75a4-439a-a202-438491c8c148Milk.png",
-    },
-    "may_contain_egg": {
-        "id": 88,
-        "name": "May Contain Egg",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1662992206/Filter/0c5bc4da-eabf-474d-9bf7-8c9f0791c7d6Eggs.png",
-    },
-    "may_contain_fish": {
-        "id": 97,
-        "name": "May Contain Fish",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1732114141/Filter/7874f89d-3ddd-4022-ac42-2ceeb462aa13Fish.png",
-    },
-    "may_contain_peanut": {
-        "id": 94,
-        "name": "May Contain Peanut",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1662992221/Filter/cdd74d0b-12b1-48f3-9e96-22761d30c289Peanuts.png",
-    },
-    "may_contain_sesame": {
-        "id": 89,
-        "name": "May Contain Sesame",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1662992237/Filter/01d8b10a-6460-424b-9912-d93c1e2dcc70Sesame.png",
-    },
-    "may_contain_soy": {
-        "id": 92,
-        "name": "May Contain Soy",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1662992261/Filter/bd40abe1-2732-40ea-9469-e6bd119c16c5Soy.png",
-    },
-    "may_contain_tree_nut": {
-        "id": 90,
-        "name": "May Contain Tree Nut",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1662992275/Filter/482ea18c-e2cb-4d7a-96fe-15b055873114TreeNut.png",
-    },
-    "may_contain_wheat": {
-        "id": 93,
-        "name": "May Contain Wheat",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1662992288/Filter/a0c44739-1e63-4229-aa4f-fed757a64b98Wheat.png",
-    },
-    "may_contain_shellfish": {},
-}
-PREFERENCES = {
-    "is_gluten_sensitive": {
-        "id": 50,
-        "name": "Gluten Sensitive",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1572036836/Filter/ffefde3e-f3f0-4fcb-8b5d-91388926f8c6GlutenSensitive.png",
-    },
-    "is_vegan": {
-        "id": 47,
-        "name": "Vegan",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1572036889/Filter/ef7edf53-362e-4916-8bf2-33c76ab41d42Vegan.png",
-    },
-    "is_vegetarian": {
-        "id": 46,
-        "name": "Vegetarian",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1660659657/Filter/985e4792-daab-40b5-8df7-fe75190907b4Vegetarian.png",
-    },
-    "is_nutrigood": {
-        "id": 52,
-        "name": "NutriGOOD",
-        "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1705603890/Filter/380a3dec-c912-45f6-9fa3-38c767bb95e0nutriGOOD_icon_for_dish.png",
-    },
-}
-ALLERGEN_FIELDS = {
-    8: "has_dairy",
-    9: "has_egg",
-    55: "has_fish",
-    7: "has_peanut",
-    56: "has_sesame",
-    6: "has_soy",
-    5: "has_tree_nut",
-    4: "has_wheat",
-    3: "has_shellfish",
-    87: "may_contain_dairy",
-    88: "may_contain_egg",
-    94: "may_contain_peanut",
-    89: "may_contain_sesame",
-    92: "may_contain_soy",
-    90: "may_contain_tree_nut",
-    93: "may_contain_wheat",
-}
-PREFERENCE_FIELDS = {
-    46: "is_vegetarian",
-    47: "is_vegan",
-    50: "is_gluten_sensitive",
-    52: "is_nutrigood",
-}
+SUPABASE_URL = os.environ.get("NUXT_SUPABASE_URL")
+SUPABASE_KEY = os.environ.get("NUXT_SUPABASE_KEY")
+
+with open("scrape/allergens_and_preferences.json") as f:
+    d = json.load(f)
+    ALLERGENS = d["allergens"]
+    PREFERENCES = d["preferences"]
+    ALLERGEN_FIELDS = d["allergen_fields"]
+    PREFERENCE_FIELDS = d["preference_fields"]
 
 
 class WellesleyFreshException(Exception):
@@ -224,12 +100,7 @@ class Meal(StrEnum):
     @classmethod
     def _missing_(cls, val: int):
         match val:
-            case (
-                Bates.BREAKFAST
-                | StoneDavis.BREAKFAST
-                | Lulu.BREAKFAST
-                | Tower.BREAKFAST
-            ):
+            case Bates.BREAKFAST | StoneDavis.BREAKFAST | Lulu.BREAKFAST | Tower.BREAKFAST:
                 return cls.BREAKFAST
             case Bates.LUNCH | StoneDavis.LUNCH | Lulu.LUNCH | Tower.LUNCH:
                 return cls.LUNCH
@@ -237,7 +108,25 @@ class Meal(StrEnum):
                 return cls.DINNER
 
 
-def get_menu(locationId: int, mealId: int, date: date = date.today()):
+def set_bools(payload: dict, fields_dict: dict[str, str], l: list[dict[str, str]]) -> None:
+    """
+    Uses the allergens/preferences contained in list to populate booleans in the
+    payload.
+
+    Args:
+        payload (dict): the payload to Supabase
+        fields_dict (dict): the dictionary mapping allergen/preference ids to names
+        l (dict): the list of allergens/preferences
+    """
+    for property in l:
+        id = str(property["id"])  # JSON requires the field names be strings
+        try:
+            payload[fields_dict[id]] = True
+        except KeyError:
+            print(f"\n\nno id for this property found: {id}\n\nfields: {fields_dict}\n\n")
+
+
+def get_menu(locationId: int | DiningHall, mealId: int | Meal, date: date = date.today()):
     """
     Gets the menu for a dhall and a meal for the week at the given date.
 
@@ -269,7 +158,7 @@ def get_menu(locationId: int, mealId: int, date: date = date.today()):
         )
 
 
-def push_data(dhall: int, meal: int, wfapi_menu: dict):
+def push_data(dhall: int | DiningHall, meal: int | Meal, wfapi_menu: dict):
     """
     Processes and pushes data from a menu gathered from the Wellesley Fresh
     API, as done by get_menu.
@@ -282,36 +171,54 @@ def push_data(dhall: int, meal: int, wfapi_menu: dict):
 
     url = "https://wellesley-refresh.vercel.app/api/push"
     for dish in wfapi_menu:
+        nutritionals = dish["nutritionals"]
         payload = {
-            "supabaseUrl": os.environ.get("NUXT_SUPABASE_URL"),
-            "supabaseKey": os.environ.get("NUXT_SUPABASE_KEY"),
+            # boilerplate
+            "supabaseUrl": SUPABASE_URL,
+            "supabaseKey": SUPABASE_KEY,
+            # basic dish details
             "date": dish["date"][:10],
             "dhall": dhall,
             "meal": meal,
             "name": dish["name"],
             "description": dish["description"],
+            # station details
             "station": dish["stationName"].title(),
             "stationOrder": dish["stationOrder"],
+            # serving size
+            "serving_size": float(nutritionals["servingSize"]),
+            "serving_size_unit": nutritionals["servingSizeUOM"],
+            # nutritionals
+            "calories": int(nutritionals["calories"]),
+            "fat": int(nutritionals["fat"]),  # g
+            "calories_from_fat": int(nutritionals["caloriesFromFat"]),  # not in Wellesley Fresh
+            "saturated_fat": int(nutritionals["saturatedFat"]),  # g
+            "trans_fat": int(nutritionals["transFat"]),  # g
+            "cholesterol": int(nutritionals["cholesterol"]),  # mg
+            "sodium": int(nutritionals["sodium"]),  # mg
+            "carbohydrates": int(nutritionals["carbohydrates"]),  # g
+            "dietary_fiber": int(nutritionals["dietaryFiber"]),  # g
+            "sugars": int(nutritionals["sugars"]),  # g
+            "added_sugar": int(nutritionals["addedSugar"]),  # g
+            "protein": int(nutritionals["protein"]),  # g
         }
 
         # add booleans for which allergens & preferences apply
-        for allergen in dish["allergens"]:
-            try:
-                payload[ALLERGEN_FIELDS[allergen["id"]]] = True
-            except:
-                print(f"\n\nno allergen id, {allergen['id']}\n\n")
-        for preference in dish["preferences"]:
-            payload[PREFERENCE_FIELDS[preference["id"]]] = True
+        set_bools(payload, ALLERGEN_FIELDS, dish["allergens"])
+        set_bools(payload, PREFERENCE_FIELDS, dish["preferences"])
 
+        payload["has_milk"] = True
+        print(payload)
         response = requests.post(url, json=payload, verify=False)
         print(response.json())
+        exit()
 
 
 def delete_data():
     url = "https://wellesley-refresh.vercel.app/api/delete"
     payload = {
-        "supabaseUrl": os.environ.get("NUXT_SUPABASE_URL"),
-        "supabaseKey": os.environ.get("NUXT_SUPABASE_KEY"),
+        "supabaseUrl": SUPABASE_URL,
+        "supabaseKey": SUPABASE_KEY,
     }
 
     response = requests.post(url, json=payload, verify=False)
@@ -326,7 +233,7 @@ def main() -> None:
                 date.today(),
                 date.today() + timedelta(days=7),
             ):  # get tomorrow too
-                menu = get_menu(dhall, meal, day)
+                menu = get_menu(dhall.ID, meal, day)
                 push_data(dhall.ID, meal, menu)
 
 
