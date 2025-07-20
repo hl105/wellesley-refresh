@@ -207,11 +207,8 @@ def push_data(dhall: int | DiningHall, meal: int | Meal, wfapi_menu: dict):
         set_bools(payload, ALLERGEN_FIELDS, dish["allergens"])
         set_bools(payload, PREFERENCE_FIELDS, dish["preferences"])
 
-        payload["has_milk"] = True
-        print(payload)
         response = requests.post(url, json=payload, verify=False)
         print(response.json())
-        exit()
 
 
 def delete_data():
