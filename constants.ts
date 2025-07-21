@@ -1,4 +1,4 @@
-import type { AllergenKey, Allergen, PreferenceKey, Preference } from "@/types";
+import type { AllergenKey, Allergen, PreferenceKey, Preference, Nutritional } from "@/types";
 
 export const ALLERGENS: Record<AllergenKey,  Allergen> = {
   has_dairy: {
@@ -139,3 +139,19 @@ export const PREFERENCE_FIELDS: PreferenceKey[] = [
   "is_gluten_sensitive",
   "is_nutrigood",
 ];
+export const NUTRITIONALS: Nutritional[] = [
+  "serving_size",
+  "serving_size_unit",
+  "calories",
+  "fat",
+  "calories_from_fat",
+  "saturated_fat",
+  "trans_fat",
+  "cholesterol",
+  "sodium",
+  "carbohydrates",
+  "dietary_fiber",
+  "sugars",
+  "added_sugar",
+  "protein"
+]

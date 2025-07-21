@@ -5,11 +5,13 @@ from enum import IntEnum, StrEnum
 
 import requests
 from dotenv import load_dotenv
+from supabase import create_client, Client
 
 load_dotenv(".env")
 
 SUPABASE_URL = os.environ.get("NUXT_SUPABASE_URL")
 SUPABASE_KEY = os.environ.get("NUXT_SUPABASE_KEY")
+CLIENT: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 with open("scrape/allergens_and_preferences.json") as f:
     d = json.load(f)
@@ -169,13 +171,9 @@ def push_data(dhall: int | DiningHall, meal: int | Meal, wfapi_menu: dict):
     dhall = DiningHall(dhall)
     meal = Meal(meal)
 
-    url = "https://wellesley-refresh.vercel.app/api/push"
     for dish in wfapi_menu:
         nutritionals = dish["nutritionals"]
         payload = {
-            # boilerplate
-            "supabaseUrl": SUPABASE_URL,
-            "supabaseKey": SUPABASE_KEY,
             # basic dish details
             "date": dish["date"][:10],
             "dhall": dhall,
@@ -207,7 +205,7 @@ def push_data(dhall: int | DiningHall, meal: int | Meal, wfapi_menu: dict):
         set_bools(payload, ALLERGEN_FIELDS, dish["allergens"])
         set_bools(payload, PREFERENCE_FIELDS, dish["preferences"])
 
-        response = requests.post(url, json=payload, verify=False)
+        response = CLIENT.table("Menu").insert(payload).execute()
         print(response.json())
 
 

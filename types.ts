@@ -10,11 +10,13 @@ export type AllergenKey =
   | "has_shellfish"
   | "may_contain_dairy"
   | "may_contain_egg"
+  | "may_contain_fish"
   | "may_contain_peanut"
   | "may_contain_sesame"
   | "may_contain_soy"
   | "may_contain_tree_nut"
-  | "may_contain_wheat";
+  | "may_contain_wheat"
+  | "may_contain_shellfish";
 
 export interface Allergen {
   id: number;
@@ -33,6 +35,22 @@ export interface Preference {
   name: string;
   img: string;
 }
+
+export type Nutritional =
+  | "serving_size"
+  | "serving_size_unit"
+  | "calories"
+  | "fat"
+  | "calories_from_fat"
+  | "saturated_fat"
+  | "trans_fat"
+  | "cholesterol"
+  | "sodium"
+  | "carbohydrates"
+  | "dietary_fiber"
+  | "sugars"
+  | "added_sugar"
+  | "protein"
 
 export interface PrettifiedData {
     [date: string]: {
