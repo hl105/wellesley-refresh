@@ -109,8 +109,7 @@ a {
   border-radius: 1em;
   border: 3px solid var(--darker-green);
   background-color: var(--background-shaded);
-  font-size: 1.2em;
-  margin: 1em;
+  margin: 1em 0.5em;
 }
 
 .entry {

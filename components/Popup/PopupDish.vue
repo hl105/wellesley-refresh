@@ -51,7 +51,7 @@ h1, h2, h3 {
 
 h1 {
   font-size: 2.5em;
-  margin-bottom: 0em;
+  margin: 0 .2em 0;
 }
 
 h2 {
