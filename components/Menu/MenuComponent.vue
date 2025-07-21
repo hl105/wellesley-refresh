@@ -6,6 +6,9 @@ defineProps<{
   dhallMenu: Record<string, any>;
 }>();
 
+const showDish = ref(false);
+var showDishName = null;
+var showDishDetails = null;
 </script>
 
 <template>
@@ -21,23 +24,28 @@ defineProps<{
             <h2 class="station-title"><span>{{ station }}</span></h2>
             <ul class="dish-list">
               <div v-for="(details, dishName) in dishes" :key="dishName" class="dish-item">
-                <p>{{ dishName }}</p>
-                <div v-if="toggled" class="more-options">
-                  <div class="tooltip" v-for="preference in details.preferences">
-                    <img :key="preference.id" :src="preference.img" :alt="preference.name" class="icon" />
-                    <span class="tooltiptext">{{ preference.name }}</span>
+                <button class="dish-item" @click="showDishName = dishName; showDishDetails = details; showDish = true">
+                  {{ dishName }}
+                
+                  <div v-if="toggled" class="icon-container">
+                    <div class="tooltip" v-for="preference in details.preferences">
+                      <img :key="preference.id" :src="preference.img" :alt="preference.name" class="icon" />
+                      <span class="tooltiptext">{{ preference.name }}</span>
+                    </div>
+                    <div class="tooltip" v-for="allergen in details.allergens">
+                      <img :key="allergen.id" :src="allergen.img" :alt="allergen.name" class="icon" />
+                      <span class="tooltiptext">{{ allergen.name }}</span>
+                    </div>
                   </div>
-                  <div class="tooltip" v-for="allergen in details.allergens">
-                    <img :key="allergen.id" :src="allergen.img" :alt="allergen.name" class="icon" />
-                    <span class="tooltiptext">{{ allergen.name }}</span>
-                  </div>
-                </div>
+                </button>
               </div>
             </ul>
           </div>
         </template>
       </div>
     </div>
+    
+    <PopupDish v-if="showDish" :name="showDishName" :details="showDishDetails" @close="showDish = false" />
   </div>
 </template>
 
@@ -106,11 +114,20 @@ h2 {
   flex-direction: row;
   gap: 5px;
   width: fit-content;
-  padding-bottom: .2em;
   line-height: 1em;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
+  padding: .2em;
+  padding-bottom: .15em;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dish-item:hover {
+  color: #fff2e2;
+  background-color: var(--green);
+  border-radius: .5em;
 }
 
 .icon {
@@ -119,7 +136,7 @@ h2 {
   opacity: 0.8;
 }
 
-.more-options {
+.icon-container {
   display: flex;
   flex-direction: row;
   gap: 3px;

@@ -4,6 +4,8 @@ import SelectDateButtonList from '~/components/SelectDate/SelectDateButtonList.v
 
 const { data: menu, error } = await getMenusByDate(getNow());
 
+console.log(error);
+
 const menus = computed(() => menu.value)
 // console.log("menus", menus.value);
 // console.log("menus", menus.value ? Object.keys(menus.value) : []);

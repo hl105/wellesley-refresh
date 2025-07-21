@@ -3,6 +3,7 @@ import {
   ALLERGEN_FIELDS,
   PREFERENCES,
   PREFERENCE_FIELDS,
+  NUTRITIONALS,
 } from "@/constants";
 import type { Allergen, Preference, PrettifiedData } from "@/types";
 import type { Tables } from "@/database.types";
@@ -29,6 +30,14 @@ function getPreferencesInfo(dish) {
   });
 
   return preferencesInfo;
+}
+
+function getNutritionalInfo(dish) {
+  var nutritionalInfo = {};
+  NUTRITIONALS.forEach((nutritional) => {
+    nutritionalInfo[nutritional] = dish[nutritional]
+  });
+  return nutritionalInfo
 }
 
 function prettifyData(data: Tables<"Menu">[]) {
@@ -72,6 +81,7 @@ function prettifyData(data: Tables<"Menu">[]) {
     thisStation[dish["name"]] = {
       allergens: getAllergensInfo(dish),
       preferences: getPreferencesInfo(dish),
+      nutritionals: getNutritionalInfo(dish),
       description: dish["description"],
     };
   });

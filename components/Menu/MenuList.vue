@@ -22,7 +22,7 @@ const sortedMeals = ["breakfast", "lunch", "brunch", "dinner"];
           </div>
         </div>
       </div>
-  </div>
+    </div>
   </div>
 </template>
 

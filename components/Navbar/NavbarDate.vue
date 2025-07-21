@@ -4,8 +4,8 @@ const props = defineProps({
     date: String
 });
 
-console.log(props.meals)
-console.log(props.date)
+// console.log(props.meals)
+// console.log(props.date)
 // console.log(props.date, today, (props.date === today))
 const date = (props.date === getToday()) ? "Today" : ((props.date === getTomorrow()) ? "Tomorrow" : formatDate(props.date));
 const sortedMeals = ["breakfast", "lunch", "brunch", "dinner"];
