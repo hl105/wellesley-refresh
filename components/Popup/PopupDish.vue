@@ -51,7 +51,7 @@ h1, h2, h3 {
 
 h1 {
   font-size: 2.5em;
-  margin: 0 .2em 0;
+  margin: 0 .4em .3em;
 }
 
 h2 {
@@ -66,6 +66,16 @@ h2 {
 h3 {
   font-size: 1.5em;
   margin: .5em 0;
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 1.8em;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
 }
 
 main {
@@ -144,7 +154,7 @@ p {
 }
 
 .icon {
-  width: 4em;
+  width: 3em;
   margin: auto;
 }
 
