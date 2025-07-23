@@ -41,8 +41,8 @@ const toggleNavbar = () => {
 
 <template>
   <div class="navbar-container">
-    <div class="hamburger" @click="toggleNavbar" :style="{ display: `${hamburger_display}` }">
-      <p>☰</p>
+    <div class="hamburger-button" @click="toggleNavbar" :style="{ display: `${hamburger_display}` }">
+      <img class="hamburger" src="assets/images/hamburger.svg" />
     </div>
     <aside class="Navbar" v-if="isNavbarVisible" @click="toggleNavbar">
       <div class="close-button">
@@ -60,13 +60,12 @@ const toggleNavbar = () => {
 </template>
 
 <style scoped>
-.hamburger {
+.hamburger-button {
   position: fixed;
   bottom: 1rem;
   right: 1.5rem;
   width: 2.5rem;
   height: 2.5rem;
-  padding-bottom: 4px;
   cursor: pointer;
   z-index: 100;
   background-color: #687350;
@@ -75,13 +74,12 @@ const toggleNavbar = () => {
   align-items: center;
   justify-content: center;
   /* border: 3px dotted #fff2e2; */
-  color: #fff2e2;
+  color: hsl(33, 100%, 94%);
 }
 
-.hamburger p {
-  font-size: 1.5rem;
-  position: relative;
-  /* margin-top: 5px; */
+.hamburger {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .Navbar {
