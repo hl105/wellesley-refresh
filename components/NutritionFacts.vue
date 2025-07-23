@@ -90,6 +90,19 @@ function percentify(num) {
 </template>
 
 <style scoped>
+h1, h2 {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.2em;
+  margin-bottom: -.2em;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
 a {
   color: var(--darker-green);
   text-decoration: underline;
@@ -121,7 +134,7 @@ a {
 
 .thinner-separator, .thin-separator, .thick-separator {
   background-color: var(--darker-green);
-  margin: .5em 0;
+  margin: .4em 0;
 }
 
 .thin-separator {
@@ -138,15 +151,6 @@ a {
 
 .more-indented {
   margin-left: 1em;
-}
-
-h1, h2 {
-  text-align: center;
-}
-
-h1 {
-  font-size: 2em;
-  margin-bottom: -.2em;
 }
 
 .daily-value-header {
