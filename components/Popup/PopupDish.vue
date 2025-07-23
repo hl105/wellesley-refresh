@@ -34,9 +34,7 @@ const props = defineProps({
             </div>
           </div>
           
-
-
-          <NutritionTable :nutritionals="details.nutritionals" />
+          <NutritionFacts :nutritionals="details.nutritionals" />
         </div>
       </main>
     </div>
