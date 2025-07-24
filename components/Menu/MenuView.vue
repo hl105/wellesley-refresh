@@ -14,10 +14,6 @@ const sortedDates = computed(() => { // sort dates by time
 
 <template>
   <div v-for="date in sortedDates" :key="date">
-    <h1 class="title" :id="String(date)"/>
-    <br />
-    <br />
-    <br />
     <MenuDateButton :date="date" />
     <MenuList :meals="menus[date]" :date="date" />
   </div>

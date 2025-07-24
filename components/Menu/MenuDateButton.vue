@@ -15,6 +15,7 @@ const backgroundC = (props.date === getToday()) ? "#F3A203" : "#687350";
 .dateheader {
     display: grid;
     place-items: center;
+    margin-top: 5em;
 }
 button {
     padding: 5px 10px;
