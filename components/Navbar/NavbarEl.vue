@@ -78,8 +78,7 @@ const toggleNavbar = () => {
 }
 
 .hamburger {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 60%;
 }
 
 .Navbar {
