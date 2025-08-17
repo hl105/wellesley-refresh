@@ -1,11 +1,20 @@
 import json
+import logging
 import os
 from datetime import date, timedelta
 from enum import IntEnum, StrEnum
+from pathlib import Path
 
 import requests
 from dotenv import load_dotenv
-from supabase import create_client, Client
+from supabase import Client, create_client
+
+log = logging.getLogger(__name__)
+logging.basicConfig(
+    filename=Path.cwd() / "scrape" / "main.log",
+    encoding="utf-8",
+    format="[%(asctime)s] %(levelname)s: %(module)s, line %(lineno)d\n%(message)s\n",
+)
 
 load_dotenv(".env")
 
@@ -75,7 +84,7 @@ class DiningHall(StrEnum):
     TOWER = "Tower"
 
     @classmethod
-    def _missing_(cls, val: int) -> str:
+    def _missing_(cls, val: int):
         match val:
             case Bates.ID:
                 return cls.BATES
@@ -125,7 +134,12 @@ def set_bools(payload: dict, fields_dict: dict[str, str], l: list[dict[str, str]
         try:
             payload[fields_dict[id]] = True
         except KeyError:
-            print(f"\n\nno id for this property found: {id}\n\nfields: {fields_dict}\n\n")
+            log.warning(
+                "no id for this property found: %s\npayload: %s\nfields: %s",
+                id,
+                payload,
+                fields_dict,
+            )
 
 
 def get_menu(locationId: int | DiningHall, mealId: int | Meal, date: date = date.today()):
@@ -206,7 +220,7 @@ def push_data(dhall: int | DiningHall, meal: int | Meal, wfapi_menu: dict):
         set_bools(payload, PREFERENCE_FIELDS, dish["preferences"])
 
         response = CLIENT.table("Menu").insert(payload).execute()
-        print(response.json())
+        log.debug("inserted data. response: %s", response.json())
 
 
 def delete_data():
@@ -217,7 +231,7 @@ def delete_data():
     }
 
     response = requests.post(url, json=payload, verify=False)
-    print(response.json())
+    log.debug("deleted data. response: %s", response.json())
 
 
 def main() -> None:
@@ -227,7 +241,7 @@ def main() -> None:
             for day in (
                 date.today(),
                 date.today() + timedelta(days=7),
-            ):  # get tomorrow too
+            ):  # get next week too
                 menu = get_menu(dhall.ID, meal, day)
                 push_data(dhall.ID, meal, menu)
 
