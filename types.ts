@@ -7,6 +7,7 @@ export type AllergenKey =
   | "has_soy"
   | "has_tree_nut"
   | "has_wheat"
+  | "has_coconut"
   | "has_shellfish"
   | "may_contain_dairy"
   | "may_contain_egg"

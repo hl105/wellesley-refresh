@@ -46,6 +46,11 @@ export const ALLERGENS: Record<AllergenKey,  Allergen> = {
     name: "Shellfish",
     img: "https://res.cloudinary.com/avi-foodsystems/image/upload/v1572036362/Filter/9022fb0c-eb15-43f5-b636-9735b184f3e4Shellfish.png",
   },
+  has_coconut: {
+    id: 98,
+    name: "Coconut",
+    img: "https://res.cloudinary.com/avi-foodsystems/image/upload/v1754396019/Filter/1a4b5379-741d-408a-965c-426104083cd9Coconut.jpg"
+  },
   may_contain_dairy: {
     id: 87,
     name: "May Contain Dairy",
