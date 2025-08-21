@@ -23,7 +23,7 @@ var showDishDetails = null;
           <div class="station">
             <h2 class="station-title"><span>{{ station }}</span></h2>
             <ul class="dish-list">
-              <div v-for="(details, dishName) in dishes" :key="dishName" class="dish-item">
+              <div v-for="(details, dishName) in dishes" :key="dishName">
                 <button class="dish-item" @click="showDishName = dishName; showDishDetails = details; showDish = true">
                   {{ dishName }}
                 
@@ -125,8 +125,7 @@ h2 {
 }
 
 .dish-item:hover {
-  color: #fff2e2;
-  background-color: var(--green);
+  background-color: var(--transparent-green);
   border-radius: .5em;
 }
 

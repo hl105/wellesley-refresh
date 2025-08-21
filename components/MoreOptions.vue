@@ -2,6 +2,18 @@
 import { toggled, useToggle } from '@/composables/useToggle';
 const { toggle } = useToggle();
 const showPopupCaption = ref(false);
+
+onMounted(() => {
+  const toggleState = localStorage.getItem('toggleState')
+  if (toggleState !== null) {
+    toggled.value = toggleState === 'true'
+  }
+})
+
+watch(toggled, (newVal) => {
+  localStorage.setItem('toggleState', String(newVal))
+})
+
 </script>
 
 <template>
@@ -12,7 +24,7 @@ const showPopupCaption = ref(false);
             <button class="caption-button" @click="showPopupCaption = true"> Allergens & Preferences</button>
             <p>:</p>
             <label class="toggle-b">
-                <input type="checkbox" class="appearance-none peer" @change="toggle"/>
+                <input type="checkbox" class="appearance-none peer" @change="toggle" :checked="toggled"/>
                 <span class="w-12 h-7 flex items-center flex-shrink-0 ml-3 mb-5 p-1  bg-[#687350]  rounded-full after:w-5 after:h-5 after:bg-white  after:rounded-full after:shadow-md peer-checked:bg-[#F3A203] duration-300 ease-in-out after:duration-300 peer-checked:after:translate-x-5"></span>
             </label>
             

@@ -95,7 +95,7 @@ h1, h2 {
 }
 
 h1 {
-  font-size: 2.2em;
+  font-size: 1.8em;
   margin-bottom: -.2em;
 }
 
@@ -115,14 +115,14 @@ a {
 
 .nutrition-box {
   width: 20em;
-  min-width: 19em;
+  min-width: 18em;
   height: 35em;
-  min-height: 35em;
+  min-height: 32em;
   padding: 10px;
   border-radius: 1em;
   border: 3px solid var(--darker-green);
   background-color: var(--background-shaded);
-  margin: 1em 0.5em;
+  margin: 1em;
 }
 
 .entry {

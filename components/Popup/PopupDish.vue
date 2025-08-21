@@ -140,7 +140,6 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  max-width: 20em;
 }
 
 p {
@@ -148,16 +147,16 @@ p {
 }
 
 .allergens-and-preferences {
-  margin: 1em;
+  margin: 0em 1em;
 }
 
 .icon {
-  width: 3em;
+  width: 1.5em;
   margin: auto;
 }
 
 .attribute {
-  width: 5em;
+  min-width: 3em;
   margin: 0.5em;
   text-align: center;
 }

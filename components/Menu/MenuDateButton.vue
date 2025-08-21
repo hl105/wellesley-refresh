@@ -6,7 +6,7 @@ const backgroundC = (props.date === getToday()) ? "#F3A203" : "#687350";
 </script>
 
 <template>
-    <div class="dateheader">
+    <div class="dateheader" :id="String(props.date)">
         <button :style="{ backgroundColor: `${backgroundC}`}">{{ date }}</button>
     </div>
 </template>
