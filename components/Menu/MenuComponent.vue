@@ -16,7 +16,7 @@ var showDishDetails = null;
     <h1 class="menu-title">{{ dhall }}</h1>
     <div>
       <div v-if="Object.keys(dhallMenu).length === 0" class="station">
-        No menu items :(
+        Menu not available :(
       </div>
       <div v-for="(dishes, station) in dhallMenu" :key="station">
         <template v-if="station !== 'order'">
