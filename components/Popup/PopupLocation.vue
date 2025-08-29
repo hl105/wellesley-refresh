@@ -94,6 +94,7 @@ const handleClose = () => {
   background-color: transparent;
   color: black;
   font-size: 1em;
+  white-space: nowrap;
 }
 
 .dining-hall-item.selected-hall {
@@ -106,8 +107,9 @@ const handleClose = () => {
 }
 
 .dining-hall-container {
-  display: flex-wrap;
-  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 0.5em;
@@ -115,5 +117,18 @@ const handleClose = () => {
 
 .dining-hall-item input[type="checkbox"] {
   display: none; /* hide default checkbox */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .dining-hall-container {
+    gap: 0.3em;
+  }
+  
+  .dining-hall-item {
+    font-size: 0.9em;
+    padding: 0.4em 0.8em;
+    margin: 0.2em;
+  }
 }
 </style>

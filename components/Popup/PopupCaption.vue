@@ -16,6 +16,7 @@ const {
   setPreferenceMode,
   setIncludeNoPreferences,
   setHideUnknownAllergens,
+  resetToDefaults,
   getSummary
 } = useAllergenPreferenceFilter();
 
@@ -71,6 +72,9 @@ const summary = computed(() => getSummary());
                 <div class="summary-line" v-if="summary">
                     {{ summary }}
                 </div>
+                <button @click="resetToDefaults" class="reset-button">
+                    Reset to default
+                </button>
             </div>
 
             <!-- Preferences Section -->
@@ -287,6 +291,26 @@ const summary = computed(() => getSummary());
     font-weight: 500;
     margin-top: 1em;
     border: 1px solid rgba(104, 115, 80, 0.2);
+}
+
+/* Reset button */
+.reset-button {
+    margin-top: 0.8em;
+    padding: 0.5em 1em;
+    background: transparent;
+    color: #666;
+    border: 1px solid #ddd;
+    border-radius: 0.4em;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: all 0.2s;
+    align-self: flex-start;
+}
+
+.reset-button:hover {
+    background: #f5f5f5;
+    border-color: #687350;
+    color: #687350;
 }
 
 /* Section styles */

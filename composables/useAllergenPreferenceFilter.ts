@@ -88,6 +88,15 @@ export const useAllergenPreferenceFilter = () => {
     saveToStorage();
   };
 
+  const resetToDefaults = () => {
+    includedPreferences.value = Object.keys(PREFERENCES);
+    excludedAllergens.value = [];
+    preferenceMode.value = "OR";
+    includeNoPreferences.value = true;
+    hideUnknownAllergens.value = false;
+    saveToStorage();
+  };
+
   const shouldShowDish = (dish: any) => {
     if (!dish) return true;
 
@@ -260,6 +269,7 @@ export const useAllergenPreferenceFilter = () => {
     setPreferenceMode,
     setIncludeNoPreferences,
     setHideUnknownAllergens,
+    resetToDefaults,
     // Filtering
     filterMenuByAllergenPreference,
     getSummary,
