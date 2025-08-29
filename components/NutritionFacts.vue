@@ -114,6 +114,7 @@ a {
 }
 
 .nutrition-box {
+  box-sizing: border-box; /* prevents width overflow */
   width: 20em;
   min-width: 18em;
   height: 35em;
@@ -122,7 +123,7 @@ a {
   border-radius: 1em;
   border: 3px solid var(--darker-green);
   background-color: var(--background-shaded);
-  margin: 1em;
+  margin: 0.5em;
 }
 
 .entry {

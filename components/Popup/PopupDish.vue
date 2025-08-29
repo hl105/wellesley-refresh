@@ -83,7 +83,8 @@ main {
 
 .details {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
   flex-wrap: wrap;
 }
 
@@ -100,7 +101,6 @@ main {
 .popup-content {
   display: flex;
   flex-direction: column;
-  align-items: left;
   justify-content: center;
   gap: 0.8em;
   background-color: #fff2e2;
@@ -113,7 +113,7 @@ main {
   border-width: 3px;
   border-color: black;
   padding-top: 2em;
-  max-width: 80%;
+  max-width: 90%;
   max-height: 85%;
   overflow: hidden;
 }
@@ -147,7 +147,11 @@ p {
 }
 
 .allergens-and-preferences {
-  margin: 0em 1em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon {
