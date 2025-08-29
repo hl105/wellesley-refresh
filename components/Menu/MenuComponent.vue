@@ -130,9 +130,12 @@ h2 {
   overflow-wrap: break-word;
 }
 
-.dish-item:hover {
-  background-color: var(--transparent-green);
-  border-radius: .5em;
+/* Only apply hover effects on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .dish-item:hover {
+    background-color: var(--transparent-green);
+    border-radius: .5em;
+  }
 }
 
 .icon {
