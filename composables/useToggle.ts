@@ -1,4 +1,4 @@
-const toggled = ref(true);
+const toggled = ref(false);
 const isInitialized = ref(false);
 
 const initializeFromStorage = () => {
