@@ -8,8 +8,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="popup-overlay" @click="emit('close')">
-    <div class="popup-content" @click.stop>
+  <div class="popup-overlay">
+    <div class="popup-content">
       <main>
         <button class="close-button" @click="emit('close')">X</button>
         <h1>{{ name }}</h1>
