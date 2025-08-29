@@ -1,35 +1,23 @@
 <script setup lang="ts">
-import { toggled, useToggle } from '@/composables/useToggle';
-const { toggle } = useToggle();
 const showPopupCaption = ref(false);
-
-onMounted(() => {
-  const toggleState = localStorage.getItem('toggleState')
-  if (toggleState !== null) {
-    toggled.value = toggleState === 'true'
-  }
-})
-
-watch(toggled, (newVal) => {
-  localStorage.setItem('toggleState', String(newVal))
-})
+const showPopupLocation = ref(false);
 
 </script>
 
 <template>
     <div class="more-options">
         <div class="text-container">
-            <h2 v-if="toggled">Hide</h2>
-            <h2 v-else>Show</h2>
-            <button class="caption-button" @click="showPopupCaption = true"> Allergens & Preferences</button>
-            <p>:</p>
-            <label class="toggle-b">
-                <input type="checkbox" class="appearance-none peer" @change="toggle" :checked="toggled"/>
-                <span class="w-12 h-7 flex items-center flex-shrink-0 ml-3 mb-5 p-1  bg-[#687350]  rounded-full after:w-5 after:h-5 after:bg-white  after:rounded-full after:shadow-md peer-checked:bg-[#F3A203] duration-300 ease-in-out after:duration-300 peer-checked:after:translate-x-5"></span>
-            </label>
-            
+            <h2>Filter By:</h2>
+            <div class="preference-allergen-container">
+                <button class="caption-button" @click="showPopupCaption = true"> Allergens & Preferences</button>
+            </div>
+            <p>|</p>
+            <div class="location-container">
+                <button class="location-button" @click="showPopupLocation = true"> Locations</button>
+            </div>
         </div>
         <PopupCaption v-if="showPopupCaption" @close="showPopupCaption = false" />
+        <PopupLocation v-if="showPopupLocation" @close="showPopupLocation = false" />
     </div>
 </template>
 
@@ -42,14 +30,28 @@ watch(toggled, (newVal) => {
     border-bottom: 3px dotted #687350;
 }
 
+.preference-allergen-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.location-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
 .caption-button {
     text-decoration: underline;
     color: #687350;
     cursor: pointer;
-    transition-duration: 0.3s;
     display: block;
     font-family: 'DynaPuff';
-    margin: 0 -7px 0 -3px;
 }
 
 .text-container {
@@ -58,13 +60,18 @@ watch(toggled, (newVal) => {
     align-items: center;
     justify-content: center;
     gap: 0.5em;
-}
-
-.toggle-b {
-    cursor: pointer;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 h2 {
     color: #687350;
+}
+
+.location-button {
+    text-decoration: underline;
+    color: #687350;
+    cursor: pointer;
+    font-family: 'DynaPuff';
 }
 </style>
