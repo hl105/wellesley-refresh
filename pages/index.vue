@@ -3,10 +3,23 @@ import NavbarEl from '~/components/Navbar/NavbarEl.vue';
 import SelectDateButtonList from '~/components/SelectDate/SelectDateButtonList.vue';
 
 const { data: menu, error } = await getMenusByDate(getNow());
+const { filterMenuByLocations, isInitialized } = useLocationFilter();
+const { filterMenuByAllergenPreference, isInitialized: isAllergenInitialized } = useAllergenPreferenceFilter();
 
 console.log(error);
 
-const menus = computed(() => menu.value)
+const menus = computed(() => {
+  if (!menu.value || !isInitialized.value || !isAllergenInitialized.value) return null;
+  
+  // location filtering
+  let filteredMenu = filterMenuByLocations(menu.value);
+  
+  // allergen/preference filtering
+  filteredMenu = filterMenuByAllergenPreference(filteredMenu);
+  
+  return filteredMenu;
+})
+
 // console.log("menus", menus.value);
 // console.log("menus", menus.value ? Object.keys(menus.value) : []);
 const showPopupDisclaimer = ref(false);

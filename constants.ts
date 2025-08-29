@@ -92,7 +92,9 @@ export const ALLERGENS: Record<AllergenKey,  Allergen> = {
     img: "https://res.cloudinary.com/avi-foodsystems/image/upload/v1662992288/Filter/a0c44739-1e63-4229-aa4f-fed757a64b98Wheat.png",
   },
   may_contain_shellfish: {
-
+    id: 91,
+    name: "May Contain Shellfish",
+    img: "https://res.cloudinary.com/avi-foodsystems/image/upload/v1572036362/Filter/9022fb0c-eb15-43f5-b636-9735b184f3e4Shellfish.png",
   }
 };
 
