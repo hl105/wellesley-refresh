@@ -11,7 +11,7 @@ const props = defineProps({
   <div class="popup-overlay">
     <div class="popup-content">
       <main>
-        <button class="close-button" @click="emit('close')">X</button>
+        <button class="close-button" @click="(event) => { event.stopPropagation(); emit('close'); }">X</button>
         <h1>{{ name }}</h1>
         <h2 v-if="details.description">{{ details.description }}</h2>
 

@@ -6,7 +6,8 @@ const { selectedDiningHalls, setSelectedLocations } = useLocationFilter()
 
 const selectedHalls = ref(selectedDiningHalls.value)
 
-const handleClose = () => {
+const handleClose = (event) => {
+  event.stopPropagation()
   setSelectedLocations(selectedHalls.value)
   emit('close')
 }
