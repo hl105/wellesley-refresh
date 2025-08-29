@@ -67,5 +67,7 @@ onMounted(() => {
   margin: auto;
   padding: 1em;
   margin-top: -70px;
+  box-sizing: border-box;
+  min-width: 0;
 }
 </style>
