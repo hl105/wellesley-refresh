@@ -35,49 +35,6 @@ import { ALLERGENS, PREFERENCES } from '@/constants'
 </template>
 
 <style scoped>
-.popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.8);
-}
-
-.popup-content {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: center;
-    gap: 0.8em;
-    background-color: #fff2e2;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 1em;
-    padding: 1em;
-    border-width: 3px;
-    border-color: black;
-    padding-top: 2em;
-}
-
-.close-button {
-    font-family: 'DynaPuff';
-    background-color: #fff2e2;
-    border-radius: 1em;
-    padding: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
-    position: absolute; top: 8px; right: 8px;
-}
-
-.close-button:hover {
-    background-color: #D3D3D3;
-}
-
-
 .allergen-container, .preferences-container {
     display: flex;
     flex-direction: column;
