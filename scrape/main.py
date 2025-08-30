@@ -133,6 +133,9 @@ def set_bools(payload: dict, fields_dict: dict[str, str], l: list[dict[str, str]
         id = str(property["id"])  # JSON requires the field names be strings
         try:
             payload[fields_dict[id]] = True
+            # mark all vegan meals as vegetarian (47=vegan, 46=vegetarian)
+            if id == 47:
+                payload[fields_dict[46]] = True
         except KeyError:
             log.warning(
                 "no id for this property found: %s\npayload: %s\nfields: %s",
@@ -224,7 +227,6 @@ def push_data(dhall: int | DiningHall, meal: int | Meal, wfapi_menu: dict):
 
 
 def delete_data():
-    url = "https://wellesley-refresh.vercel.app/api/delete"
     payload = {
         "supabaseUrl": SUPABASE_URL,
         "supabaseKey": SUPABASE_KEY,

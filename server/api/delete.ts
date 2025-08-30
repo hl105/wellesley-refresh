@@ -11,9 +11,7 @@ export default defineEventHandler(async (event) => {
   const supabase = createClient(body.supabaseUrl, body.supabaseKey);
   const { error } = await supabase
     .from('Menu')
-    .delete()
-    .lt('created_at', new Date(Date.now()).toISOString());
-            
+    .delete()            
 
   if (error) {
     return { success: false, error: error.message };
