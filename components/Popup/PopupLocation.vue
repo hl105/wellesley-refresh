@@ -13,8 +13,8 @@ const handleClose = () => {
 </script>
 
 <template>
-    <div class="popup-overlay">
-        <div class="popup-content">
+    <div class="popup-overlay" @click="handleClose">
+        <div class="popup-content" @click.stop>
             <button class="close-button" @click="handleClose">X</button>
             <h2>Dining Halls</h2>
             <div class="dining-hall-container">

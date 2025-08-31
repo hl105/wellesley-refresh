@@ -55,8 +55,8 @@ const summary = computed(() => getSummary());
 </script>
 
 <template>
-    <div class="popup-overlay">
-        <div class="popup-content">
+    <div class="popup-overlay" @click="emit('close')">
+        <div class="popup-content" @click.stop>
             <button class="close-button" @click="emit('close')">X</button>
             
             <!-- Header with summary -->
