@@ -88,16 +88,6 @@ main {
   flex-wrap: wrap;
 }
 
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
 .popup-content {
   display: flex;
   flex-direction: column;
@@ -116,20 +106,6 @@ main {
   max-width: 90%;
   max-height: 85%;
   overflow: hidden;
-}
-
-.close-button {
-  font-family: 'DynaPuff';
-  background-color: #fff2e2;
-  border-radius: 1em;
-  padding: 2px;
-  padding-left: 10px;
-  padding-right: 10px;
-  position: absolute; top: 8px; right: 8px;
-}
-
-.close-button:hover {
-    background-color: #D3D3D3;
 }
 
 .space {
