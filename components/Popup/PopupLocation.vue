@@ -6,34 +6,30 @@ const { selectedDiningHalls, setSelectedLocations } = useLocationFilter()
 
 const selectedHalls = ref(selectedDiningHalls.value)
 
-const handleClose = () => {
-  setSelectedLocations(selectedHalls.value)
-  emit('close')
+const delay = ms => new Promise(res => setTimeout(res, ms));
+async function dynamicUpdate() {
+  await delay(1);
+  setSelectedLocations(selectedHalls.value);
 }
 </script>
 
 <template>
-    <div class="popup-overlay" @click="handleClose">
+    <div class="popup-overlay" @click="emit('close')">
         <div class="popup-content" @click.stop>
-            <button class="close-button" @click="handleClose">X</button>
+            <button class="close-button" @click="emit('close')">X</button>
             <h2>Dining Halls</h2>
             <div class="dining-hall-container">
-                <label class="dining-hall-item" :class="{'selected-hall': selectedHalls.includes('Bates')}">
-                  <input type="checkbox" value="Bates" v-model="selectedHalls" />
-                  Bates
-                </label>
-                <label class="dining-hall-item" :class="{'selected-hall': selectedHalls.includes('Stone D')}">
-                  <input type="checkbox" value="Stone D" v-model="selectedHalls" />
-                  Stone D
-                </label>
-                <label class="dining-hall-item" :class="{'selected-hall': selectedHalls.includes('Lulu')}">
-                  <input type="checkbox" value="Lulu" v-model="selectedHalls" />
-                  Lulu
-                </label>
-                <label class="dining-hall-item" :class="{'selected-hall': selectedHalls.includes('Tower')}">
-                  <input type="checkbox" value="Tower" v-model="selectedHalls" />
-                  Tower
-                </label>
+                <input type="checkbox" id="bates" value="Bates" v-model="selectedHalls" @click="dynamicUpdate"/>
+                <label for="bates" :class="{'selected-hall': selectedHalls.includes('Bates')}">Bates</label>
+
+                <input type="checkbox" id="stoned" value="Stone D" v-model="selectedHalls" @click="dynamicUpdate" />
+                <label for="stoned" :class="{'selected-hall': selectedHalls.includes('Stone D')}">Stone D</label>
+
+                <input type="checkbox" id="lulu" value="Lulu" v-model="selectedHalls" @click="dynamicUpdate" />
+                <label for="lulu" :class="{'selected-hall': selectedHalls.includes('Lulu')}">Lulu</label>
+
+                <input type="checkbox" id="tower" value="Tower" v-model="selectedHalls" @click="dynamicUpdate"/>
+                <label for="tower" :class="{'selected-hall': selectedHalls.includes('Tower')}">Tower</label>
             </div>
             <div class="selected-halls-line">
               Selected: {{ selectedHalls.join(', ') }}
@@ -43,6 +39,10 @@ const handleClose = () => {
 </template>
 
 <style scoped>
+input {
+  display: none;
+}
+
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -85,7 +85,7 @@ const handleClose = () => {
     background-color: #D3D3D3;
 }
 
-.dining-hall-item {
+label {
   margin: 0.3em;
   padding: 0.5em 1em;
   border: none;
@@ -97,7 +97,7 @@ const handleClose = () => {
   white-space: nowrap;
 }
 
-.dining-hall-item.selected-hall {
+label.selected-hall {
   background-color: #687350;
   color: white;
 }
