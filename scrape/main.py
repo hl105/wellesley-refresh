@@ -227,6 +227,7 @@ def push_data(dhall: int | DiningHall, meal: int | Meal, wfapi_menu: dict):
 
 
 def delete_data():
+    url = "https://wellesley-refresh.vercel.app/api/delete"
     payload = {
         "supabaseUrl": SUPABASE_URL,
         "supabaseKey": SUPABASE_KEY,
