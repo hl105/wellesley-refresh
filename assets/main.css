@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
-html {
-  scroll-behavior: smooth;
+:root {
   --background: #fff2e2;
   --background-shaded: #e7ecd1;
   --shade: #D3D3D3;
@@ -9,6 +8,11 @@ html {
   --dark-green: rgb(1, 41, 27);
   --darker-green: #01291B;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Work Sans", sans-serif;
   background-color: #fff2e2;
