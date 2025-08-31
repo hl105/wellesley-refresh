@@ -4,9 +4,13 @@
   --background: #fff2e2;
   --background-shaded: #e7ecd1;
   --shade: #D3D3D3;
+  --transparent-green: rgb(104, 115, 80, 0.3);
   --green: rgb(104, 115, 80);
   --dark-green: rgb(1, 41, 27);
   --darker-green: #01291B;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 html {
@@ -17,6 +21,23 @@ body {
   font-family: "Work Sans", sans-serif;
   background-color: #fff2e2;
   color: #01291B;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent horizontal scroll on all elements */
+* {
+  box-sizing: border-box;
+}
+
+/* Container constraints */
+.page-container {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 h1, h2 {

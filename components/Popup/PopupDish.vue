@@ -8,8 +8,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="popup-overlay" @click="emit('close')">
-    <div class="popup-content" @click.stop>
+  <div class="popup-overlay">
+    <div class="popup-content">
       <main>
         <button class="close-button" @click="emit('close')">X</button>
         <h1>{{ name }}</h1>
@@ -83,13 +83,27 @@ main {
 
 .details {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
   flex-wrap: wrap;
 }
 
 .popup-content {
-  padding: 0;
-  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8em;
+  background-color: #fff2e2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1em;
+  /* padding: 1em; */
+  border-width: 3px;
+  border-color: black;
+  padding-top: 2em;
+  max-width: 90%;
   max-height: 85%;
   overflow: hidden;
 }
@@ -102,7 +116,6 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  max-width: 20em;
 }
 
 p {
@@ -110,16 +123,20 @@ p {
 }
 
 .allergens-and-preferences {
-  margin: 1em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon {
-  width: 3em;
+  width: 1.5em;
   margin: auto;
 }
 
 .attribute {
-  width: 5em;
+  min-width: 3em;
   margin: 0.5em;
   text-align: center;
 }

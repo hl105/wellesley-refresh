@@ -16,16 +16,16 @@ var showDishDetails = null;
     <h1 class="menu-title">{{ dhall }}</h1>
     <div>
       <div v-if="Object.keys(dhallMenu).length === 0" class="station">
-        No menu items :(
+        Menu not available :(
       </div>
       <div v-for="(dishes, station) in dhallMenu" :key="station">
         <template v-if="station !== 'order'">
           <div class="station">
             <h2 class="station-title"><span>{{ station }}</span></h2>
             <ul class="dish-list">
-              <div v-for="(details, dishName) in dishes" :key="dishName" class="dish-item">
+              <div v-for="(details, dishName) in dishes" :key="dishName">
                 <button class="dish-item" @click="showDishName = dishName; showDishDetails = details; showDish = true">
-                  {{ dishName }}
+                  <span class="dish-name">{{ dishName }}</span>
                 
                   <div v-if="toggled" class="icon-container">
                     <div class="tooltip" v-for="preference in details.preferences">
@@ -55,7 +55,9 @@ var showDishDetails = null;
   border-radius: 10px;
   border: 3px dotted #687350;
   position: relative;
-
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow: visible;
 }
 
 .menu-title {
@@ -96,7 +98,7 @@ ul .dish-list {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 0; /* adjust vertically as needed */
+  bottom: 0;
   width: 100%;
   height: 10px;
   transform: skew(-12deg) translateX(-50%);
@@ -113,21 +115,27 @@ h2 {
   position: relative;
   flex-direction: row;
   gap: 5px;
-  width: fit-content;
+  width: 100%;
+  max-width: 100%;
   line-height: 1em;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   margin-bottom: 3px;
   padding: .2em;
   padding-bottom: .15em;
   text-align: left;
   cursor: pointer;
+  box-sizing: border-box;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
-.dish-item:hover {
-  color: #fff2e2;
-  background-color: var(--green);
-  border-radius: .5em;
+/* Only apply hover effects on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .dish-item:hover {
+    background-color: var(--transparent-green);
+    border-radius: .5em;
+  }
 }
 
 .icon {
@@ -136,10 +144,21 @@ h2 {
   opacity: 0.8;
 }
 
+.dish-name {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  text-align: left;
+}
+
 .icon-container {
   display: flex;
   flex-direction: row;
   gap: 3px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  max-width: 40%;
 }
 
 .tooltip {
@@ -177,5 +196,33 @@ h2 {
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .menu-container {
+    padding: 1.2em 0.8em 0.1em 0.6em;
+  }
+  
+  .dish-item {
+    gap: 3px;
+    padding: 0.15em;
+    align-items: center;
+  }
+  
+  .dish-name {
+    font-size: 0.9em;
+    line-height: 1.2;
+  }
+  
+  .icon-container {
+    gap: 2px;
+    max-width: 35%;
+  }
+  
+  .icon {
+    width: 8px;
+    height: 8px;
+  }
 }
 </style>
