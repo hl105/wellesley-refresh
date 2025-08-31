@@ -37,6 +37,8 @@ export const useLocationFilter = () => {
       };
       localStorage.setItem("selectedDiningHalls", JSON.stringify(state));
     }
+
+    updateColumnSizes();
   };
 
   const getSelectedLocations = () => {
@@ -68,6 +70,12 @@ export const useLocationFilter = () => {
     return filteredData;
   };
 
+  const updateColumnSizes = () => {
+    const root = document.documentElement;
+    root.style.setProperty("--lg-num-cols", `repeat(${selectedDiningHalls.value.length}, minmax(0, 1fr))`);
+    root.style.setProperty("--sm-num-cols", `repeat(${Math.floor(selectedDiningHalls.value.length / 2)}, minmax(0, 1fr))`);
+  }
+
   initializeFromStorage();
 
   return {
@@ -75,6 +83,7 @@ export const useLocationFilter = () => {
     setSelectedLocations,
     getSelectedLocations,
     filterMenuByLocations,
+    updateColumnSizes,
     initializeFromStorage,
     isInitialized: isInitialized,
   };
