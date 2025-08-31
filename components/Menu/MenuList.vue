@@ -9,16 +9,20 @@ function capitalize(word: string) {
 }
 
 const sortedMeals = ["breakfast", "lunch", "brunch", "dinner"];
+
+const lg_num_cols = `repeat(${dhalls.length}, minmax(0, 1fr))`;
+const sm_num_cols = `repeat(${Math.floor(dhalls.length / 2)}, minmax(0, 1fr))`;
 </script>
 
 <template>
-  <div v-if="props.meals">
+  <div v-if="props.meals" ref="container">
     <div v-for="meal in sortedMeals">
       <div v-if="props.meals[meal]">
         <h1 class="title" :id="`${String(date)}-${meal}`">{{ capitalize(meal) }}</h1>
-        <div class="grid grid-cols1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto my-8">
-        <div v-for="(items, dhall) in props.meals[meal]" :key="dhall">
-            <MenuComponent :dhall="String(dhall)" :dhallMenu="items" />
+        <div :class="`grid grid-cols-1 sm:grid-cols-(--sm-num-cols) lg:grid-cols-(--lg-num-cols) gap-6 max-w-6xl mx-auto my-8`"
+          :style="{ '--lg-num-cols': lg_num_cols, '--sm-num-cols': sm_num_cols}">
+          <div v-for="dhall in dhalls" :key="dhall">
+            <MenuComponent :dhall="String(dhall)" :dhallMenu="props.meals[meal][dhall]" />
           </div>
         </div>
       </div>
