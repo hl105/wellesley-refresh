@@ -10,7 +10,10 @@ console.log(error);
 
 const menus = computed(() => {
   if (!menu.value || !isInitialized.value || !isAllergenInitialized.value) return null;
-    
+  
+  // hide dining halls w/ CSS
+  hideFilteredLocations();
+
   // allergen/preference filtering
   const filteredMenu = filterMenuByAllergenPreference(menu.value);
   
