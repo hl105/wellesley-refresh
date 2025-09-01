@@ -8,6 +8,12 @@
   --green: rgb(104, 115, 80);
   --dark-green: rgb(1, 41, 27);
   --darker-green: #01291B;
+
+  --display-bates: block;
+  --display-stoned: block;
+  --display-lulu: block;
+  --display-tower: block;
+
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;

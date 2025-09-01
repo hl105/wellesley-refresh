@@ -39,36 +39,20 @@ export const useLocationFilter = () => {
     }
 
     updateColumnSizes();
+    hideFilteredLocations();
   };
 
   const getSelectedLocations = () => {
     return selectedDiningHalls.value;
   };
 
-  const filterMenuByLocations = (menuData: any) => {
-    if (!menuData) return menuData;
-
-    const filteredData: any = {};
-
-    // Iterate through dates
-    Object.keys(menuData).forEach((date) => {
-      filteredData[date] = {};
-
-      // Iterate through meals (breakfast, lunch, dinner, brunch)
-      Object.keys(menuData[date]).forEach((meal) => {
-        filteredData[date][meal] = {};
-
-        // Filter dining halls based on selected locations
-        Object.keys(menuData[date][meal]).forEach((dhall) => {
-          if (selectedDiningHalls.value.includes(dhall)) {
-            filteredData[date][meal][dhall] = menuData[date][meal][dhall];
-          }
-        });
-      });
-    });
-
-    return filteredData;
-  };
+  const hideFilteredLocations = () => {
+    const root = document.documentElement;
+    for (const dhall of ["Bates", "Stone D", "Lulu", "Tower"]) {
+      let lowerDhall = dhall.toLowerCase().replace(' ', '');
+      root.style.setProperty("--display-" + lowerDhall, selectedDiningHalls.value.includes(dhall) ? "block" : "none");
+    }
+  }
 
   const updateColumnSizes = () => {
     const root = document.documentElement;
@@ -82,9 +66,9 @@ export const useLocationFilter = () => {
     selectedDiningHalls,
     setSelectedLocations,
     getSelectedLocations,
-    filterMenuByLocations,
+    hideFilteredLocations,
     updateColumnSizes,
     initializeFromStorage,
-    isInitialized: isInitialized,
+    isInitialized,
   };
 };
