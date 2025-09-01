@@ -15,6 +15,6 @@ const emit = defineEmits(['close'])
 <style scoped>
 .disclaimer-text {
     text-align: center;
-    color: white;
+    color: black;
 }   
 </style>
