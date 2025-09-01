@@ -248,6 +248,5 @@ def main() -> None:
                 menu = get_menu(dhall.ID, meal, day)
                 push_data(dhall.ID, meal, menu)
 
-
 if __name__ == "__main__":
     main()

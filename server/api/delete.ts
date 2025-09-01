@@ -12,6 +12,7 @@ export default defineEventHandler(async (event) => {
   const { error } = await supabase
     .from('Menu')
     .delete()            
+    .not('date', 'is', null);
 
   if (error) {
     return { success: false, error: error.message };
