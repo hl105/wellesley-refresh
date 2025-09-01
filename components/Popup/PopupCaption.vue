@@ -185,7 +185,7 @@ const summary = computed(() => getSummary());
     max-width: 90vw;
     max-height: 80vh;
     overflow-y: auto;
-    display: flex;
+    display: block;
     flex-direction: column;
     gap: 1.5em;
     box-sizing: border-box;
@@ -212,7 +212,7 @@ const summary = computed(() => getSummary());
     gap: 0.5em;
     border-bottom: 2px dotted #687350;
     padding-bottom: 0.6em;
-    padding-top: 0.2em;
+    padding-top: 0em;
 }
 
 .header-section h2 {
