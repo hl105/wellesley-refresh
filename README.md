@@ -16,9 +16,9 @@ Wellesley Refresh is **not** more accurate than Wellesley Fresh's official menu.
   - [x] move hamburger to bottom right for easier access
     - [ ] add toggle for left-handed ppl
   - [x] add more navigation buttons to get to each meal and perhaps dining hall
-- [ ] add filters for dining halls
-- [ ] add ability to filter out allergens and filter for preferences
-- [ ] add popups for each dish with its description, allergens and preferences, and nutrition
+- [x] add filters for dining halls
+- [x] add ability to filter out allergens and filter for preferences
+- [x] add popups for each dish with its description, allergens and preferences, and nutrition
   - [ ] add notification system to let you know when your favorite dish is coming up
 - [ ] crowdsourced ice cream flavors
 
