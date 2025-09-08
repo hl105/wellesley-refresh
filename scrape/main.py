@@ -14,6 +14,7 @@ logging.basicConfig(
     filename=Path.cwd() / "scrape" / "main.log",
     encoding="utf-8",
     format="[%(asctime)s] %(levelname)s: %(module)s, line %(lineno)d\n%(message)s\n",
+    level=logging.INFO,
 )
 
 load_dotenv(".env")
@@ -172,6 +173,7 @@ def get_menu(locationId: int | DiningHall, mealId: int | Meal, date: date = date
     if response.ok:
         return response.json()
     else:
+        log.critical("got web response %s while trying to get menu", response.status_code)
         raise WellesleyFreshException(  # could create a better exception class
             f"Got web response {response.status_code}!"
         )
@@ -234,7 +236,7 @@ def delete_data():
     }
 
     response = requests.post(url, json=payload, verify=False)
-    log.debug("deleted data. response: %s", response.json())
+    log.info("deleted data. response: %s", response.json())
 
 
 def main() -> None:
