@@ -241,6 +241,7 @@ def delete_data():
 
 def main() -> None:
     delete_data()
+    log.info("beginning menu scrape...")
     for dhall in DINING_HALLS:
         for meal in (dhall.BREAKFAST, dhall.LUNCH, dhall.DINNER):
             for day in (
@@ -249,6 +250,8 @@ def main() -> None:
             ):  # get next week too
                 menu = get_menu(dhall.ID, meal, day)
                 push_data(dhall.ID, meal, menu)
+    log.info("menu scrape complete.")
+
 
 if __name__ == "__main__":
     main()
