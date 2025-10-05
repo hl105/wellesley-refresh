@@ -41,7 +41,7 @@ onMounted(() => {
     <SelectDateButtonList :dates="Object.keys(menus).sort()" />
     <MoreOptions />
     <div class="main-elements">
-      <MenuView :menus="menus"" />
+      <MenuView :menus="menus" />
     </div>
     <FooterComponent />
   </div>

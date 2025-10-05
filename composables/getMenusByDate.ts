@@ -50,11 +50,31 @@ function prettifyData(data: Tables<"Menu">[]) {
     if (!(date in prettified)) {
       prettified[date] = {};
       prettified[date]["dinner"] = {};
+
+      prettified[date]["dinner"]["Bates"] = {};
+      prettified[date]["dinner"]["Stone D"] = {};
+      prettified[date]["dinner"]["Lulu"] = {};
+      prettified[date]["dinner"]["Tower"] = {};
       if (dayOfWeek === 0 || dayOfWeek === 6) {
         prettified[date]["brunch"] = {};
+
+        prettified[date]["brunch"]["Bates"] = {};
+        prettified[date]["brunch"]["Stone D"] = {};
+        prettified[date]["brunch"]["Lulu"] = {};
+        prettified[date]["brunch"]["Tower"] = {};
       } else {
         prettified[date]["breakfast"] = {};
         prettified[date]["lunch"] = {};
+
+        prettified[date]["breakfast"]["Bates"] = {};
+        prettified[date]["breakfast"]["Stone D"] = {};
+        prettified[date]["breakfast"]["Lulu"] = {};
+        prettified[date]["breakfast"]["Tower"] = {};
+
+        prettified[date]["lunch"]["Bates"] = {};
+        prettified[date]["lunch"]["Stone D"] = {};
+        prettified[date]["lunch"]["Lulu"] = {};
+        prettified[date]["lunch"]["Tower"] = {};
       }
     }
     let meals = prettified[date];
@@ -66,12 +86,6 @@ function prettifyData(data: Tables<"Menu">[]) {
     let food = meals[meal];
 
     const dhall = dish["dhall"];
-    if (!(dhall in food)) {
-      food["Bates"] = {};
-      food["Stone D"] = {};
-      food["Lulu"] = {};
-      food["Tower"] = {};
-    }
     let stations = food[dhall];
 
     const station = dish["station"];
