@@ -23,7 +23,9 @@
     "46": "is_vegetarian",
     "47": "is_vegan",
     "50": "is_gluten_sensitive",
-    "52": "is_nutrigood"
+    "52": "is_nutrigood",
+    "96": "allergen_friendly",
+    "100": "peak_performance"
   },
   "allergens": {
     "has_dairy": {
@@ -143,6 +145,16 @@
       "id": 52,
       "name": "NutriGOOD",
       "img": "https://res.cloudinary.com/avi-foodsystems/image/upload/v1705603890/Filter/380a3dec-c912-45f6-9fa3-38c767bb95e0nutriGOOD_icon_for_dish.png"
+    },
+    "allergen_friendly": {
+      "id": 96,
+      "name": "Allergen Friendly",
+      "img": ""
+    },
+    "peak_performance": {
+      "id": 100,
+      "name": "Peak Performance",
+      "img": ""
     }
   }
 }

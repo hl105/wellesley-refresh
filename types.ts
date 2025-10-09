@@ -29,7 +29,9 @@ export type PreferenceKey =
   | "is_vegetarian"
   | "is_vegan"
   | "is_gluten_sensitive"
-  | "is_nutrigood";
+  | "is_nutrigood"
+  | "allergen_friendly"
+  | "peak_performance";
 
 export interface Preference {
   id: number;

@@ -119,6 +119,16 @@ export const PREFERENCES: Record<PreferenceKey, Preference> = {
     name: "NutriGOOD",
     img: "https://res.cloudinary.com/avi-foodsystems/image/upload/v1705603890/Filter/380a3dec-c912-45f6-9fa3-38c767bb95e0nutriGOOD_icon_for_dish.png",
   },
+  allergen_friendly: {
+    "id": 96,
+    "name": "Allergen Friendly",
+    "img": ""
+  },
+  peak_performance: {
+    "id": 100,
+    "name": "Peak Performance",
+    "img": ""
+  },
 };
 export const ALLERGEN_FIELDS: AllergenKey[] = [
   "has_dairy",
@@ -145,6 +155,8 @@ export const PREFERENCE_FIELDS: PreferenceKey[] = [
   "is_vegan",
   "is_gluten_sensitive",
   "is_nutrigood",
+  "allergen_friendly",
+  "peak_performance"
 ];
 export const NUTRITIONALS: Nutritional[] = [
   "serving_size",
