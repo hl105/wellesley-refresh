@@ -1,28 +1,32 @@
 import json
 import logging
 import os
+import sys
 from datetime import date, timedelta
 from enum import IntEnum, StrEnum
 from pathlib import Path
 
 import requests
+import urllib3
 from dotenv import load_dotenv
 from supabase import Client, create_client
-
-import urllib3
 
 # supabase does not use certificate verification
 # supress warnings for now at least
 # ideally we could just use a local SQLite db instead, but that's a future TODO
 urllib3.disable_warnings()
 
-log = logging.getLogger(__name__)
+#
+# LOGGING
+#
 logging.basicConfig(
     filename=Path.cwd() / "scrape" / "main.log",
     encoding="utf-8",
     format="[%(asctime)s] %(levelname)s: %(module)s, line %(lineno)d\n%(message)s\n",
     level=logging.INFO,
 )
+log = logging.getLogger(__name__)
+log.addHandler(logging.StreamHandler(sys.stdout))  # also print to stdout
 
 load_dotenv(".env")
 
