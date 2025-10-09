@@ -28,11 +28,15 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 log.addHandler(logging.StreamHandler(sys.stdout))  # also print to stdout
 
+#
+# CONSTANTS
+#
 load_dotenv(".env")
-
 SUPABASE_URL = os.environ.get("NUXT_SUPABASE_URL")
 SUPABASE_KEY = os.environ.get("NUXT_SUPABASE_KEY")
 CLIENT: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+AVI_API = "https://dish.avifoodsystems.com/api/menu-items/week"
 
 with open("scrape/allergens_and_preferences.json") as f:
     d = json.load(f)
@@ -170,7 +174,7 @@ def get_menu(locationId: int | DiningHall, mealId: int | Meal, date: date = date
         Exception: when web response is not ok
     """
     response = requests.get(
-        "https://dish.avifoodsystems.com/api/menu-items/week",
+        AVI_API,
         params={
             "date": date.strftime(
                 "%-m/%-d/%y"  # the - makes the date not 0-padded
