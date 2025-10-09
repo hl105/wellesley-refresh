@@ -9,6 +9,13 @@ import requests
 from dotenv import load_dotenv
 from supabase import Client, create_client
 
+import urllib3
+
+# supabase does not use certificate verification
+# supress warnings for now at least
+# ideally we could just use a local SQLite db instead, but that's a future TODO
+urllib3.disable_warnings()
+
 log = logging.getLogger(__name__)
 logging.basicConfig(
     filename=Path.cwd() / "scrape" / "main.log",
