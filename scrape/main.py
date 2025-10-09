@@ -225,7 +225,7 @@ def push_data(dhall: int | DiningHall, meal: int | Meal, wfapi_menu: dict):
         set_bools(payload, PREFERENCE_FIELDS, dish["preferences"])
 
         response = CLIENT.table("Menu").insert(payload).execute()
-        log.debug("inserted data. response: %s", response.json())
+        log.debug("inserted data. response: %s", response.model_dump_json())
 
 
 def delete_data():
